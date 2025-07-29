@@ -1,0 +1,15 @@
+**Sobre**
+
+Praticando desenvolver minha primeira aplicação backend, utilizando Java e framework Spring Boot.
+
+**Objetivo:**
+
+Por em prática meus conhecimentos teóricos desenvolvendo um sistema backend *super simples*.
+
+**Ferramentas:**
+
+Linguagem Java;
+Framework SpringBoot;
+Versionamento de código e commits com Git;
+IDE: NetBeans porque meu PC é fraco;
+
