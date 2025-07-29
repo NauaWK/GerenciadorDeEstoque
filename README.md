@@ -10,7 +10,7 @@ Por em prática meus conhecimentos teóricos desenvolvendo um sistema backend *s
 
 Linguagem Java;
 
-Framework SpringBoot;
+Framework SpringBoot (Spring Initializr);
 
 Versionamento de código e commits com Git;
 
