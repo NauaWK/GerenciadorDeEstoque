@@ -1,6 +1,6 @@
-**Sobre**
+**Sobre:**
 
-Praticando desenvolver minha primeira aplicação backend, utilizando Java e framework Spring Boot.
+Minha primeira aplicação backend, utilizando Java e framework Spring Boot.
 
 **Objetivo:**
 
