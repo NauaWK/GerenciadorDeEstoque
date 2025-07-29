@@ -16,5 +16,5 @@ Gerenciador de dependências Maven;
 
 Versionamento de código e commits com Git;
 
-IDE: NetBeans porque meu PC é fraco;
+IDE NetBeans porque meu PC é fraco;
 
