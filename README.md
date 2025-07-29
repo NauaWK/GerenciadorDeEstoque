@@ -8,9 +8,9 @@ Por em prática meus conhecimentos teóricos desenvolvendo um sistema backend *s
 
 **Ferramentas:**
 
-Linguagem Java;
+Linguagem Java 21;
 
-Framework SpringBoot (Spring Initializr);
+Framework SpringBoot 3.5.4 (Spring Initializr);
 
 Versionamento de código e commits com Git;
 
