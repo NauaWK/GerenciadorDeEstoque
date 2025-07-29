@@ -16,10 +16,5 @@ public class ControllerTeste {
     public String hello() {
         return "Olá, Mundo(de Spring)!";
     }
-    
-    @GetMapping("/arroz")
-    public String arroz() {
-        return "arroz!";
-    }
        
 }
