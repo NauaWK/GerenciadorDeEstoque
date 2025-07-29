@@ -9,7 +9,10 @@ Por em prática meus conhecimentos teóricos desenvolvendo um sistema backend *s
 **Ferramentas:**
 
 Linguagem Java;
+
 Framework SpringBoot;
+
 Versionamento de código e commits com Git;
+
 IDE: NetBeans porque meu PC é fraco;
 
