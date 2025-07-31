@@ -18,5 +18,5 @@ Banco de dados MongoDB para testes (Usando a versão nuvem do MongoDB Atlas: htt
 
 Versionamento de código com Git;
 
-IDE NetBeans;
+IDE NetBeans 26;
 
