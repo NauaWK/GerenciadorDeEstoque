@@ -14,9 +14,9 @@ Framework SpringBoot 3.5.4 (Spring Initializr);
 
 Gerenciador de dependências Maven;
 
-Banco de dados MongoDB (Usando a versão nuvem do MongoDB Atlas);
+Banco de dados local H2 para testes;
 
 Versionamento de código com Git;
 
-IDE NetBeans porque meu PC é fraco;
+IDE NetBeans 26;
 
