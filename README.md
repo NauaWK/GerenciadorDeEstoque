@@ -14,7 +14,7 @@ Framework SpringBoot 3.5.4 (Spring Initializr);
 
 Gerenciador de dependências Maven;
 
-Banco de dados MongoDB (Usando a versão nuvem do MongoDB Atlas);
+Banco de dados MongoDB para testes (Usando a versão nuvem do MongoDB Atlas);
 
 Versionamento de código com Git;
 
