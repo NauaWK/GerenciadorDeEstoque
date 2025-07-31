@@ -18,5 +18,5 @@ Banco de dados MongoDB para testes (Usando a versão nuvem do MongoDB Atlas);
 
 Versionamento de código com Git;
 
-IDE NetBeans porque meu PC é fraco;
+IDE IntelliJ Community Edition;
 
