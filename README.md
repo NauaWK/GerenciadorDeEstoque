@@ -11,15 +11,19 @@ Minha primeira aplicação backend usando Java + SpringBoot. Quero por em práti
 A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente manipular e ter o controle total do seu estoque personalizado.
 
 
-## Endpoints REST
+ ## Ferramentas Utilizadas
 
-POST /adicionarProduto - Adicionar um novo produto ✅️ 
+Linguagem Java 21;
 
-GET /listarProdutos - Consultar os produtos do estoque ⌛
+Framework SpringBoot 3.5.4 (Spring Initializr);
 
-PUT /atualizarProduto/{id} - Atualizar um produto existente ⌛
+Gerenciador de dependências Maven;
 
-DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
+Banco de dados local H2 para testes;
+
+Versionamento de código com Git;
+
+IDE NetBeans 26;
 
 
 ## Models
@@ -54,19 +58,15 @@ Arquitetura em camadas com:
 → Repository
 
 
- ## Ferramentas Utilizadas
+## Endpoints REST
 
-Linguagem Java 21;
+POST /adicionarProduto - Adicionar um novo produto ✅️ 
 
-Framework SpringBoot 3.5.4 (Spring Initializr);
+GET /listarProdutos - Consultar os produtos do estoque ⌛
 
-Gerenciador de dependências Maven;
+PUT /atualizarProduto/{id} - Atualizar um produto existente ⌛
 
-Banco de dados local H2 para testes;
-
-Versionamento de código com Git;
-
-IDE NetBeans 26;
+DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 
 
 ## OBSERVAÇÕES ⚠️
