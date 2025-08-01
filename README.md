@@ -45,7 +45,7 @@ IDE NetBeans 26;
 
  ## Arquitetura
 
-Arquitetura em camadas com:
+Arquitetura em **camadas** com:
 
 → Model/Entity
 
