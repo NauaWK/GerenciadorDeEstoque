@@ -1,25 +1,27 @@
-**Objetivo deste projeto**
+**Sistema de Gerenciamento de Estoque – Spring Boot**
+
+- **Objetivo deste projeto**
 
 Minha primeira aplicação backend usando Java + SpringBoot. Quero por em prática meus conhecimentos teóricos desenvolvendo um sisteminha simples para fins de estudo.
 
 
-**Sobre**
+- **Sobre**
 
 A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente manipular e ter o controle total do seu estoque personalizado.
 
 
-**Endpoints REST**
+- **Endpoints REST**
 
 POST /adicionarProduto - Adicionar um novo produto ✅️ 
 
-GET /listarProdutos - Consultar os produtos do estoque (banco) ⌛
+GET /listarProdutos - Consultar os produtos do estoque ⌛
 
-PUT /atualizarProduto/{id} - Editar  um produto existente ⌛
+PUT /atualizarProduto/{id} - Atualizar um produto existente ⌛
 
 DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 
 
-**Models**
+- **Models**
 
 → ProdutoModel (@Entity)
 
@@ -36,13 +38,13 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 → dataAdicao
 
 
-**Arquitetura**
+- **Arquitetura**
 
 Arquitetura em camadas com:
 
 → Model/Entity
 
-→ RequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model, porém a **resposta** ao usuário conterá todos os campos, incluindo Id e dataAdicao)
+→ RequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model - apenas nome, preco e quantidade - porém a **resposta** ao usuário conterá todos os campos, incluindo Id e dataAdicao)
 
 → Controller
 
@@ -51,7 +53,7 @@ Arquitetura em camadas com:
 → Repository
 
 
-**Ferramentas**
+- **Ferramentas**
 
 Linguagem Java 21;
 
