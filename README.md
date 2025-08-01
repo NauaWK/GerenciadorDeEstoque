@@ -1,10 +1,20 @@
+**Objetivo deste projeto:**
+
+Minha primeira aplicação backend usando Java + SpringBoot. Quero por em prática meus conhecimentos teóricos desenvolvendo um sisteminha simples para fins de estudo.
+
 **Sobre:**
 
-Minha primeira aplicação backend, utilizando Java e framework Spring Boot. A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente consultar os produtos do estoque(banco), adicionar um novo, editar ou deletar um produto existente.
+A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente manipular e ter o controle total do seu estoque personalizado.
 
-**Objetivo:**
+**Endpoints REST:**
 
-Por em prática meus conhecimentos teóricos desenvolvendo um sistema backend *super simples*.
+POST /adicionarProduto - Adicionar um novo produto ✅️ 
+
+GET /listarProdutos - Consultar os produtos do estoque (banco) ⌛
+
+PUT /atualizarProduto/{id} - Editar  um produto existente ⌛
+
+DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 
 **Ferramentas:**
 
