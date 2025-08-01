@@ -1,10 +1,12 @@
 **Objetivo deste projeto**
 
 Minha primeira aplicação backend usando Java + SpringBoot. Quero por em prática meus conhecimentos teóricos desenvolvendo um sisteminha simples para fins de estudo.
-<br>
+
+
 **Sobre**
 
 A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente manipular e ter o controle total do seu estoque personalizado.
+
 
 **Endpoints REST**
 
@@ -15,7 +17,6 @@ GET /listarProdutos - Consultar os produtos do estoque (banco) ⌛
 PUT /atualizarProduto/{id} - Editar  um produto existente ⌛
 
 DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
-
 
 
 **Models**
@@ -34,6 +35,7 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 
 → dataAdicao
 
+
 **Arquitetura**
 
 Arquitetura em camadas com:
@@ -47,6 +49,7 @@ Arquitetura em camadas com:
 → Service
 
 → Repository
+
 
 **Ferramentas**
 
