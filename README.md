@@ -71,4 +71,4 @@ IDE NetBeans 26;
 
 ## OBSERVAÇÕES ⚠️
 
-*Sou um estudade e este é meu primeiro projeto usando Java com um framework voltado ao desenvolvimento de APIs. Logo, a ideia do projeto pode parecer ser muito simples e genérica, mas esta simplicidade se deve justamente por ser minha primeira aplicação backend, e, como dito no tópico "Objetivos deste projeto", o foco principal se torna o estudo e a prática. Todavia, pretendo incrementá-lo com novas funcionalidades ao longo do tempo (por exemplo, criar mais entidades no banco de dados).*
+*Sou um estudade e este é meu primeiro projeto usando Java com um framework voltado ao desenvolvimento de APIs. Logo, a ideia do projeto pode parecer ser muito simples e genérica, mas esta simplicidade se deve justamente por ser minha primeira aplicação backend, e, como dito no tópico "Objetivo deste projeto", o foco principal se torna o estudo e a prática. Todavia, pretendo incrementá-lo com novas funcionalidades ao longo do tempo (por exemplo, criar mais entidades no banco de dados).*
