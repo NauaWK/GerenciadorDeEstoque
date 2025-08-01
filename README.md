@@ -71,5 +71,5 @@ IDE NetBeans 26;
 
 ## OBSERVAÇÕES ⚠️
 
-**Sou um estudade e este é meu primeiro projeto usando Java com um framework voltado ao desenvolvimento de APIs. Além disso, o projeto parece ser muito simples, mas pretendo incrementá-lo com novas funcionalidades ao longo do tempo como, por exemplo, criar mais entidades no banco.
+*Sou um estudade e este é meu primeiro projeto usando Java com um framework voltado ao desenvolvimento de APIs. Além disso, o projeto parece ser muito simples, mas pretendo incrementá-lo com novas funcionalidades ao longo do tempo como, por exemplo, criar mais entidades no banco.*
 
