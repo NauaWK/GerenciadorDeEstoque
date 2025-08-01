@@ -16,6 +16,17 @@ PUT /atualizarProduto/{id} - Editar  um produto existente ⌛
 
 DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
 
+**Models:**
+
+→ ProdutoModel (@Entity)
+
+*Atributos ProdutoModel*
+→ Id
+→ nome
+→ preco
+→ quantidade
+→ dataAdicao
+
 **Ferramentas:**
 
 Linguagem Java 21;
