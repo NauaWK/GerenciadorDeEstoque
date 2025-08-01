@@ -1,6 +1,6 @@
 **Sobre:**
 
-Minha primeira aplicação backend, utilizando Java e framework Spring Boot.
+Minha primeira aplicação backend, utilizando Java e framework Spring Boot. A *princípio*, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário/cliente consultar os produtos do estoque(banco), adicionar um novo, editar ou deletar um produto existente.
 
 **Objetivo:**
 
