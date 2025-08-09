@@ -28,7 +28,7 @@ IDE NetBeans 26;
 
 ## Models
 
-→ ProdutoModel (@Entity)
+→ ProdutoModel (Entidade)
 
 **Atributos ProdutoModel:**
 
