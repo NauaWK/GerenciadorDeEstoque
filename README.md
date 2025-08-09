@@ -66,7 +66,7 @@ GET /listarProdutos - Consultar os produtos do estoque ✅️
 
 PUT /atualizarProduto/{id} - Atualizar um produto existente ✅️
 
-DELETE /deletarProduto/{id} - Deletar um produto existente ✅️⌛
+DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 
 ## OBSERVAÇÕES ⚠️
