@@ -8,7 +8,7 @@ Minha primeira aplicação backend usando Java + SpringBoot. Quero por em práti
 
 ## Sobre
 
-A princípio, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário criar e manipular um estoque genérico de produtos de uma vasta variedade de setores.
+A princípio, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário criar e manipular um estoque genérico de produtos de sua preferência.
 
 
  ## Ferramentas Utilizadas
