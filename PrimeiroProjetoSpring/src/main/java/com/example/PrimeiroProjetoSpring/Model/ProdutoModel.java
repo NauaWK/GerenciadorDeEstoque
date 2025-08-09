@@ -1,5 +1,5 @@
 
-package com.example.PrimeiroProjetoSpring;
+package com.example.PrimeiroProjetoSpring.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +39,6 @@ public class ProdutoModel {
         this.id = id;
     }
     
-
     public String getNome() {
         return nome;
     }

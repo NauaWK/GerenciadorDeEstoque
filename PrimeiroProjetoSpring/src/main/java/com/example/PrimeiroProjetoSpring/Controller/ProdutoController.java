@@ -1,8 +1,11 @@
-package com.example.PrimeiroProjetoSpring;
+package com.example.PrimeiroProjetoSpring.Controller;
 
-import com.example.PrimeiroProjetoSpring.ProdutosDTO.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.Model.ProdutoModel;
+import com.example.PrimeiroProjetoSpring.Service.ProdutoServices;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +26,10 @@ public class ProdutoController {
     }
     
     @PostMapping("/adicionarProduto")
-    public ProdutoModel adicionarProduto(@RequestBody ProdutoRequestDTO produto){
-        ProdutoModel produtoSalvo = produtoServices.convertDtoToModel(produto);             
-        return produtoSalvo;      
+    public ResponseEntity<?> adicionarProduto(@RequestBody ProdutoRequestDTO produto){
+        ProdutoModel produtoSalvo = produtoServices.convertDtoToModel(produto); 
+        produtoServices.adicionarProduto(produtoSalvo);
+        return ResponseEntity.ok().body(produtoSalvo);      
     }
        
     @GetMapping("/listarProdutos")
@@ -34,8 +38,13 @@ public class ProdutoController {
     }
     
     @PutMapping("/atualizarProduto/{id}")
-    public Optional<ProdutoModel> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoRequestDTO novoProdutoRequest){
+    public ResponseEntity<?> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoRequestDTO novoProdutoRequest){
         return produtoServices.atualizarProduto(id, novoProdutoRequest);      
     }  
+    
+    @DeleteMapping("/deletarProduto/{id}")
+    public ResponseEntity<?> deletarProduto(@PathVariable Long id){
+        return produtoServices.deletarProduto(id);
+    }
 }
     
