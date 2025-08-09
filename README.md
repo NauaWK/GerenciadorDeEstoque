@@ -64,9 +64,9 @@ POST /adicionarProduto - Adicionar um novo produto ✅️
 
 GET /listarProdutos - Consultar os produtos do estoque ✅️
 
-PUT /atualizarProduto/{id} - Atualizar um produto existente ⌛
+PUT /atualizarProduto/{id} - Atualizar um produto existente ✅️⌛ (falta melhorias)
 
-DELETE /deletarProduto/{id} - Deletar um produto existente ⌛
+DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 
 ## OBSERVAÇÕES ⚠️
