@@ -42,6 +42,8 @@ IDE NetBeans 26;
 
 → dataAdicao
 
+→ dataModificacao
+
 
  ## Arquitetura
 
@@ -49,7 +51,7 @@ Arquitetura em **camadas** com:
 
 → Model/Entity
 
-→ RequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model - apenas nome, preco e quantidade - porém a **resposta** ao usuário conterá todos os campos, incluindo Id e dataAdicao)
+→ RequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model - apenas nome, preco e quantidade - porém a **resposta** ao usuário conterá todos os campos, incluindo Id, dataAdicao e dataModificacao)
 
 → Controller
 
@@ -64,7 +66,7 @@ POST /adicionarProduto - Adicionar um novo produto ✅️
 
 GET /listarProdutos - Consultar os produtos do estoque ✅️
 
-GET /listarProdutos/{id} - Consultar um produto específico pelo ID ⏳
+GET /listarProdutos/{id} - Consultar um produto específico pelo ID ✅️
 
 PUT /atualizarProduto/{id} - Atualizar um produto existente ✅️
 
