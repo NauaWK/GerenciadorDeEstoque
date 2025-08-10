@@ -1,13 +1,15 @@
 
 package com.example.PrimeiroProjetoSpring.Model;
 
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-import java.time.LocalDateTime;
-
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 @Table(name = "tb_produtos")
@@ -18,17 +20,32 @@ public class ProdutoModel {
     private Long id; 
     
     private String nome;
-    private double preco;
+    
+    private BigDecimal preco;
     private int quantidade;
+    
     private LocalDateTime dataAdicao;
+    private LocalDateTime dataModificacao;
+    
+    
+    //métodos utilitários para formatar a data e hora de criação e modificação de objetos no banco
+    @PrePersist
+    public void aoCriar() {
+        dataAdicao = LocalDateTime.now().withNano(0);
+        dataModificacao = LocalDateTime.now().withNano(0);
+    }
+
+    @PreUpdate
+    public void aoAtualizar() {
+        dataModificacao = LocalDateTime.now().withNano(0);
+    }
     
     public ProdutoModel(){}
     
-    public ProdutoModel(String nome, double preco, int quantidade, LocalDateTime dataAdicao){
+    public ProdutoModel(String nome, BigDecimal preco, int quantidade){
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
-        this.dataAdicao = dataAdicao;
     }
 
     public Long getId() {
@@ -47,11 +64,11 @@ public class ProdutoModel {
         this.nome = nome;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
@@ -63,7 +80,6 @@ public class ProdutoModel {
         this.quantidade = quantidade;
     }
     
-
     public LocalDateTime getDataAdicao() {
         return dataAdicao;
     }
@@ -71,8 +87,14 @@ public class ProdutoModel {
     public void setDataAdicao(LocalDateTime dataAdicao) {
         this.dataAdicao = dataAdicao;
     }
-    
-    
+
+    public LocalDateTime getDataModificacao() {
+        return dataModificacao;
+    }
+
+    public void setDataModificacao(LocalDateTime dataModificacao) {
+        this.dataModificacao = dataModificacao;
+    }
     
     
 }

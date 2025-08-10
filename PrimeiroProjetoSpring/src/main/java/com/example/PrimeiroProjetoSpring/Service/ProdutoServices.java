@@ -4,7 +4,6 @@ package com.example.PrimeiroProjetoSpring.Service;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
 import com.example.PrimeiroProjetoSpring.Model.ProdutoModel;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
-import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +22,9 @@ public class ProdutoServices {
     //conversão de ProdutoRequestDTO para ProdutoModel
     public ProdutoModel convertDtoToModel(ProdutoRequestDTO produto){
         ProdutoModel produtoSalvo = new ProdutoModel(
-                produto.nome(), 
-                produto.preco(), 
-                produto.quantidade(),
-                LocalDateTime.now()
+                produto.getNome(), 
+                produto.getPreco(), 
+                produto.getQuantidade()               
         );      
         return produtoSalvo;
     }
@@ -42,6 +40,15 @@ public class ProdutoServices {
         return listaProdutos;
     }
     
+    //buscando um produto no banco pelo ID pela rota GET /listarProdutos/id
+    
+    public ResponseEntity<?> listarProdutoPorId(Long id){
+        ProdutoModel produtoExistente = produtoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));      
+        return ResponseEntity.ok().body(produtoExistente);      
+    }
+     
+    
     //atualizando um produto com a rota PUT /atualizarProduto/id
     public ResponseEntity<?> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
         ProdutoModel produtoExistente = produtoRepository.findById(id)
@@ -51,12 +58,10 @@ public class ProdutoServices {
         ProdutoModel produtoAtualizado = convertDtoToModel(novoProdutoRequest);
         produtoExistente.setNome(produtoAtualizado.getNome());
         produtoExistente.setPreco(produtoAtualizado.getPreco());
-        produtoExistente.setQuantidade(produtoAtualizado.getQuantidade());
-        produtoExistente.setDataAdicao(produtoAtualizado.getDataAdicao()); 
-        produtoAtualizado.setId(produtoExistente.getId());
-        adicionarProduto(produtoExistente);
+        produtoExistente.setQuantidade(produtoAtualizado.getQuantidade()); 
         
-        return ResponseEntity.ok().body(produtoAtualizado);
+        adicionarProduto(produtoExistente);
+        return ResponseEntity.ok().body(produtoExistente);
     }
     
     //deletando um produto com a rota DELETE /deletarProduto/id
@@ -64,6 +69,6 @@ public class ProdutoServices {
         ProdutoModel produtoSelecionado = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         produtoRepository.deleteById(id);
-        return ResponseEntity.ok().body("ID do produto deletado:\n" + produtoSelecionado.getId());
+        return ResponseEntity.ok().body("Produto deletado:\n" + "ID - " + produtoSelecionado.getId() + " Nome - " + produtoSelecionado.getNome());
     }
 }
