@@ -53,6 +53,8 @@ Arquitetura em **camadas** com:
 
 → ProdutoRequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model - apenas nome, preco e quantidade - porém a **resposta** ao usuário conterá todos os campos, incluindo Id, dataAdicao e dataModificacao)
 
+→ ProdutoResponseDTO
+
 → ProdutoController
 
 → ProdutoService
