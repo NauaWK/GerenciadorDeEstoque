@@ -2,7 +2,8 @@
 package com.example.PrimeiroProjetoSpring.Service;
 
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
-import com.example.PrimeiroProjetoSpring.Model.ProdutoModel;
+import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
+import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -14,61 +15,50 @@ import org.springframework.web.server.ResponseStatusException;
 public class ProdutoServices {
     
     private final ProdutoRepository produtoRepository;
+    private final ProdutoMapper produtoMapper;
     
-    public ProdutoServices(ProdutoRepository produtoRepository){
+    public ProdutoServices(ProdutoRepository produtoRepository, ProdutoMapper produtoMapper){
         this.produtoRepository = produtoRepository;
+        this.produtoMapper = produtoMapper;
     }
-    
-    //conversão de ProdutoRequestDTO para ProdutoModel
-    public ProdutoModel convertDtoToModel(ProdutoRequestDTO produto){
-        ProdutoModel produtoSalvo = new ProdutoModel(
-                produto.getNome(), 
-                produto.getPreco(), 
-                produto.getQuantidade()               
-        );      
-        return produtoSalvo;
-    }
-    
+     
     //método utilitário para adicionar um produto ao repository
-    public void adicionarProduto(ProdutoModel produto){
+    public void adicionarProduto(Produto produto){
         produtoRepository.save(produto);
     }
     
     //acessando todos os produtos do Repository para a rota GET /listarProdutos
-    public List<ProdutoModel> listarProdutos(){
-        List<ProdutoModel> listaProdutos = produtoRepository.findAll();
-        return listaProdutos;
+    public List<Produto> listarProdutos(){
+        return produtoRepository.findAll();
     }
     
     //buscando um produto no banco pelo ID pela rota GET /listarProdutos/id
     
     public ResponseEntity<?> listarProdutoPorId(Long id){
-        ProdutoModel produtoExistente = produtoRepository.findById(id)
+        Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));      
         return ResponseEntity.ok().body(produtoExistente);      
     }
-     
-    
+       
     //atualizando um produto com a rota PUT /atualizarProduto/id
     public ResponseEntity<?> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
-        ProdutoModel produtoExistente = produtoRepository.findById(id)
+        Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         
-        //se estiver presente no banco altera os dados      
-        ProdutoModel produtoAtualizado = convertDtoToModel(novoProdutoRequest);
-        produtoExistente.setNome(produtoAtualizado.getNome());
-        produtoExistente.setPreco(produtoAtualizado.getPreco());
-        produtoExistente.setQuantidade(produtoAtualizado.getQuantidade()); 
+        //se estiver presente no banco altera os dados;
+        produtoExistente.setNome(novoProdutoRequest.getNome());
+        produtoExistente.setPreco(novoProdutoRequest.getPreco());
+        produtoExistente.setQuantidade(novoProdutoRequest.getQuantidade()); 
         
         adicionarProduto(produtoExistente);
-        return ResponseEntity.ok().body(produtoExistente);
+        return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
     
     //deletando um produto com a rota DELETE /deletarProduto/id
     public ResponseEntity<?> deletarProduto(Long id){
-        ProdutoModel produtoSelecionado = produtoRepository.findById(id)
+        Produto produtoSelecionado = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         produtoRepository.deleteById(id);
-        return ResponseEntity.ok().body("Produto deletado:\n" + "ID - " + produtoSelecionado.getId() + " Nome - " + produtoSelecionado.getNome());
+        return ResponseEntity.ok().body("Produto deletado:\n" + produtoMapper.convertProdutoToDTO(produtoSelecionado));
     }
 }

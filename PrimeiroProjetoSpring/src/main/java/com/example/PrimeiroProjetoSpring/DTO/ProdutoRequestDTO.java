@@ -14,7 +14,7 @@ public class ProdutoRequestDTO {
     private String nome;
     
     @Positive
-    @DecimalMax(value = "10000.00", message = "O preço não pode ultrapassar R$10.000,00")
+    @DecimalMax(value = "1000.00", message = "O preço não pode ultrapassar R$1.000,00")
     private BigDecimal preco;
     
     @Range(min = 1, max = 100, message = "A quantidade de produtos deve estar entre 1 e 999")

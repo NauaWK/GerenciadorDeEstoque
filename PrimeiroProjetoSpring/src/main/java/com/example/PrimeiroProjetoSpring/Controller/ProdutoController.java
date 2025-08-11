@@ -1,8 +1,9 @@
 package com.example.PrimeiroProjetoSpring.Controller;
 
-import com.example.PrimeiroProjetoSpring.Model.ProdutoModel;
+import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Service.ProdutoServices;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -22,20 +23,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutoController {
     
     private final ProdutoServices produtoServices;
+    private final ProdutoMapper produtoMapper;
     
-    public ProdutoController(ProdutoServices produtoServices){
+    public ProdutoController(ProdutoServices produtoServices, ProdutoMapper produtoMapper){
         this.produtoServices = produtoServices;
+        this.produtoMapper = produtoMapper;
     }
     
     @PostMapping("/adicionarProduto")
     public ResponseEntity<?> adicionarProduto(@Valid @RequestBody ProdutoRequestDTO produto){
-        ProdutoModel produtoSalvo = produtoServices.convertDtoToModel(produto); 
+        Produto produtoSalvo = produtoMapper.convertDtoToModel(produto); 
         produtoServices.adicionarProduto(produtoSalvo);
-        return ResponseEntity.created(URI.create("/estoque/adicionarProduto/" + produtoSalvo.getId())).body(produtoSalvo);      
+        return ResponseEntity.created(URI.create("/estoque/adicionarProduto/" + produtoSalvo.getId())).body(produtoMapper.convertProdutoToDTO(produtoSalvo));      
     }
        
     @GetMapping("/listarProdutos")
-    public List<ProdutoModel> listarProdutos(){
+    public List<Produto> listarProdutos(){
         return produtoServices.listarProdutos(); 
     }
     

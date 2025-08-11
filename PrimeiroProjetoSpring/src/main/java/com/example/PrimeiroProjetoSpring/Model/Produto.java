@@ -13,7 +13,7 @@ import jakarta.persistence.PreUpdate;
 
 @Entity
 @Table(name = "tb_produtos")
-public class ProdutoModel {
+public class Produto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,9 +40,9 @@ public class ProdutoModel {
         dataModificacao = LocalDateTime.now().withNano(0);
     }
     
-    public ProdutoModel(){}
+    public Produto(){}
     
-    public ProdutoModel(String nome, BigDecimal preco, int quantidade){
+    public Produto(String nome, BigDecimal preco, int quantidade){
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
