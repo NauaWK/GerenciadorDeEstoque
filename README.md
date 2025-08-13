@@ -32,7 +32,7 @@ IDE NetBeans 26;
 
 ## Models
 
-→ ProdutoModel
+→ Produto
 
 **Atributos ProdutoModel:**
 
