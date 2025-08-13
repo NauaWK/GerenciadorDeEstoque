@@ -78,6 +78,34 @@ PUT /atualizarProduto/{id} - Atualizar um produto existente ✅️
 
 DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
+## Como rodar a aplicação
+
+**Requisitos:**
+
+-Java 17+
+-Maven
+
+**Passos:**
+
+1. Clone o repositório
+2. Navegue até a pasta do projeto
+3. Execute o comando: mvn spring-boot:run
+4. Caso esteja utilizando uma IDE como IntelliJ, Eclipse ou NetBeans, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication
+
+**URLs principais:**
+
+→ Após iniciar a aplicação, você pode acessar:
+
+Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+Console do banco H2: http://localhost:8080/h2-console
+
+JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
+
+Usuário: sa
+
+Senha: (deixe em branco ou conforme configurado)
+
 
 ## OBSERVAÇÕES ⚠️
 
