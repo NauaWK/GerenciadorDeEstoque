@@ -8,7 +8,7 @@ import com.example.PrimeiroProjetoSpring.Model.Categoria;
 
 public class CategoriaMapper {
     
-     //conversão de CategoraRequestDTO para Categoria
+     //conversão de CategoriaRequestDTO para Categoria
     public Categoria convertDtoToModel(CategoriaRequestDTO categoriaRequestDTO){
         return new Categoria(
             categoriaRequestDTO.nome(), 
