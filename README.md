@@ -15,11 +15,15 @@ A princípio, o projeto consistirá em um sistema de **gerenciamento de estoque*
 
 Linguagem Java 21;
 
-Framework SpringBoot 3.5.4 (Spring Initializr);
-
-Gerenciador de dependências Maven;
+Framework SpringBoot 3.5.4;
 
 Banco de dados local H2 para testes;
+
+Persistência de dados com Spring Data JPA;
+
+Swagger UI para facilitar testes e visualização dos endpoints;
+
+Gerenciador de dependências Maven;
 
 Versionamento de código com Git;
 
@@ -77,4 +81,4 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 ## OBSERVAÇÕES ⚠️
 
-*Sou um estudante e este é meu primeiro projeto usando Java com um framework voltado ao desenvolvimento de APIs. Logo, a ideia do projeto pode parecer ser muito simples e genérica, mas esta simplicidade se deve justamente por ser minha primeira aplicação backend, e, como dito no tópico "Objetivo deste projeto", o foco principal se torna o estudo e a prática. Todavia, pretendo incrementá-lo com novas funcionalidades ao longo do tempo (por exemplo, criar mais entidades no banco de dados).*
+*Este projeto foi desenvolvido como parte de meus estudos em backend com Java e Spring Boot. Embora seja uma aplicação simples e com escopo genérico, seu objetivo principal é consolidar conhecimentos em arquitetura de APIs REST, persistência com Spring Data JPA e boas práticas de desenvolvimento. Futuramente, pretendo expandir suas funcionalidades e aplicar conceitos mais avançados conforme evoluo tecnicamente.*
