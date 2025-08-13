@@ -1,8 +1,8 @@
 
 package com.example.PrimeiroProjetoSpring.Mapper;
 
-import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
-import com.example.PrimeiroProjetoSpring.DTO.ProdutoResponseDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,23 @@ public class ProdutoMapper {
     
     //conversão de ProdutoRequestDTO para Produto
     public Produto convertDtoToModel(ProdutoRequestDTO produtoRequestDTO){
-        Produto produtoConvertido = new Produto(
-                produtoRequestDTO.getNome(), 
-                produtoRequestDTO.getPreco(), 
-                produtoRequestDTO.getQuantidade()               
+        return new Produto(
+            produtoRequestDTO.nome(), 
+            produtoRequestDTO.preco(), 
+            produtoRequestDTO.quantidade(),
+            produtoRequestDTO.categoriaId()
         );      
-        return produtoConvertido;
     }  
     
     //conversão de Produto para ProdutoResponseDTO
-    public ProdutoResponseDTO convertProdutoToDTO(Produto produtoModel){
-        ProdutoResponseDTO produtoConvertido = new ProdutoResponseDTO(
-                produtoModel.getNome(), 
-                produtoModel.getPreco(), 
-                produtoModel.getQuantidade(),
-                produtoModel.getDataAdicao(),
-                produtoModel.getDataModificacao()
+    public ProdutoResponseDTO convertProdutoToDTO(Produto produto){
+        return new ProdutoResponseDTO(
+                produto.getId(),
+                produto.getNome(), 
+                produto.getPreco(), 
+                produto.getQuantidade(),
+                produto.getDataAdicao(),
+                produto.getDataModificacao()
         );      
-        return produtoConvertido;
     }    
 }

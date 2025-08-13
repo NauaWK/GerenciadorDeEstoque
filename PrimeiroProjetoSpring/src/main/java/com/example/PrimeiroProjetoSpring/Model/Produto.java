@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
@@ -27,6 +29,11 @@ public class Produto {
     private LocalDateTime dataAdicao;
     private LocalDateTime dataModificacao;
     
+    //vários produtos para 1 categoria
+    @ManyToOne()
+    @JoinColumn(name = "categoria_id")
+    private Long categoriaId;
+    
     
     //métodos utilitários para formatar a data e hora de criação e modificação de objetos no banco
     @PrePersist
@@ -42,20 +49,17 @@ public class Produto {
     
     public Produto(){}
     
-    public Produto(String nome, BigDecimal preco, int quantidade){
+    public Produto(String nome, BigDecimal preco, int quantidade, Long categoriaId){
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.categoriaId = categoriaId;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
     public String getNome() {
         return nome;
     }
@@ -96,5 +100,8 @@ public class Produto {
         this.dataModificacao = dataModificacao;
     }
     
+    public Long getCategoria(){
+        return categoriaId;
+    } 
     
 }

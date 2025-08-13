@@ -1,0 +1,28 @@
+
+package com.example.PrimeiroProjetoSpring.Mapper;
+
+import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaResponseDTO;
+import com.example.PrimeiroProjetoSpring.Model.Categoria;
+
+
+public class CategoriaMapper {
+    
+     //conversão de CategoraRequestDTO para Categoria
+    public Categoria convertDtoToModel(CategoriaRequestDTO categoriaRequestDTO){
+        return new Categoria(
+            categoriaRequestDTO.nome(), 
+            categoriaRequestDTO.descricao()
+        );      
+    }  
+    
+    //conversão de Categoria para CategoraRequestDTO
+    public CategoriaResponseDTO convertCategoriaToDTO(Categoria categoria){
+        return new CategoriaResponseDTO(
+            categoria.getId(),
+            categoria.getNome(), 
+            categoria.getDescricao()
+        );
+    }    
+    
+}

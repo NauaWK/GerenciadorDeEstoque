@@ -1,7 +1,8 @@
 
 package com.example.PrimeiroProjetoSpring.Service;
 
-import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
@@ -34,31 +35,31 @@ public class ProdutoServices {
     
     //buscando um produto no banco pelo ID pela rota GET /listarProdutos/id
     
-    public ResponseEntity<?> listarProdutoPorId(Long id){
+    public ResponseEntity<ProdutoResponseDTO> listarProdutoPorId(Long id){
         Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));      
-        return ResponseEntity.ok().body(produtoExistente);      
+        return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));      
     }
        
     //atualizando um produto com a rota PUT /atualizarProduto/id
-    public ResponseEntity<?> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
+    public ResponseEntity<ProdutoResponseDTO> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
         Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         
         //se estiver presente no banco altera os dados;
-        produtoExistente.setNome(novoProdutoRequest.getNome());
-        produtoExistente.setPreco(novoProdutoRequest.getPreco());
-        produtoExistente.setQuantidade(novoProdutoRequest.getQuantidade()); 
+        produtoExistente.setNome(novoProdutoRequest.nome());
+        produtoExistente.setPreco(novoProdutoRequest.preco());
+        produtoExistente.setQuantidade(novoProdutoRequest.quantidade()); 
         
         adicionarProduto(produtoExistente);
         return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
     
     //deletando um produto com a rota DELETE /deletarProduto/id
-    public ResponseEntity<?> deletarProduto(Long id){
+    public ResponseEntity<String> deletarProduto(Long id){
         Produto produtoSelecionado = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         produtoRepository.deleteById(id);
-        return ResponseEntity.ok().body("Produto deletado:\n" + produtoMapper.convertProdutoToDTO(produtoSelecionado));
+        return ResponseEntity.ok().body("Produto deletado com sucesso:\n" + produtoMapper.convertProdutoToDTO(produtoSelecionado));
     }
 }

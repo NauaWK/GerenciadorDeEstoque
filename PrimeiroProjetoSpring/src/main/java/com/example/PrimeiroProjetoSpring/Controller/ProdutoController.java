@@ -2,7 +2,8 @@ package com.example.PrimeiroProjetoSpring.Controller;
 
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Service.ProdutoServices;
-import com.example.PrimeiroProjetoSpring.DTO.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -31,9 +32,9 @@ public class ProdutoController {
     }
     
     @PostMapping("/adicionarProduto")
-    public ResponseEntity<?> adicionarProduto(@Valid @RequestBody ProdutoRequestDTO produto){
+    public ResponseEntity<ProdutoResponseDTO> adicionarProduto(@Valid @RequestBody ProdutoRequestDTO produto){
         Produto produtoSalvo = produtoMapper.convertDtoToModel(produto); 
-        produtoServices.adicionarProduto(produtoSalvo);
+        produtoServices.adicionarProduto(produtoMapper.convertDtoToModel(produto));
         return ResponseEntity.created(URI.create("/estoque/adicionarProduto/" + produtoSalvo.getId())).body(produtoMapper.convertProdutoToDTO(produtoSalvo));      
     }
        
@@ -43,17 +44,17 @@ public class ProdutoController {
     }
     
     @GetMapping("/listarProdutos/{id}")
-    public ResponseEntity<?> listarProdutoPorId(@PathVariable Long id){
+    public ResponseEntity<ProdutoResponseDTO> listarProdutoPorId(@PathVariable Long id){
         return produtoServices.listarProdutoPorId(id);
     }
         
     @PutMapping("/atualizarProduto/{id}")
-    public ResponseEntity<?> atualizarProduto(@PathVariable Long id, @Valid @RequestBody ProdutoRequestDTO novoProdutoRequest){
+    public ResponseEntity<ProdutoResponseDTO> atualizarProduto(@PathVariable Long id, @Valid @RequestBody ProdutoRequestDTO novoProdutoRequest){
         return produtoServices.atualizarProduto(id, novoProdutoRequest);      
     }  
     
     @DeleteMapping("/deletarProduto/{id}")
-    public ResponseEntity<?> deletarProduto(@PathVariable Long id){
+    public ResponseEntity<String> deletarProduto(@PathVariable Long id){
         return produtoServices.deletarProduto(id);
     }
 }
