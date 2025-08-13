@@ -34,19 +34,7 @@ IDE NetBeans 26;
 
 → Produto
 
-**Atributos ProdutoModel:**
-
-→ Id
-
-→ nome
-
-→ preco
-
-→ quantidade
-
-→ dataAdicao
-
-→ dataModificacao
+→ Categoria
 
 
  ## Arquitetura
