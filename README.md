@@ -90,7 +90,7 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 **Passos:**
 
-1. Clone o repositório
+1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto
 3. Execute o comando: mvn spring-boot:run
 4. Caso esteja utilizando uma IDE como IntelliJ, Eclipse ou NetBeans, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication
