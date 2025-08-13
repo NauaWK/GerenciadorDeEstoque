@@ -15,7 +15,7 @@ A princípio, o projeto consistirá em um sistema de **gerenciamento de estoque*
 
 Linguagem Java 21;
 
-Framework SpringBoot 3.5.4;
+Framework Spring Boot 3.5.4;
 
 Banco de dados local H2 para testes;
 
