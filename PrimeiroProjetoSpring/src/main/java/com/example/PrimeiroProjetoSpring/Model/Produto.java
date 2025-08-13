@@ -30,7 +30,7 @@ public class Produto {
     private LocalDateTime dataModificacao;
     
     //vários produtos para 1 categoria
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Long categoriaId;
     
