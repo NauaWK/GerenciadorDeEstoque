@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Estoque – Spring Boot
+# Sistema de Gerenciamento de Estoque – Java + Spring Boot
 
 
 ## Objetivo deste projeto
