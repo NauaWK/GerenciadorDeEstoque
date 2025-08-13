@@ -32,7 +32,7 @@ IDE NetBeans 26;
 
 ## Models
 
-→ ProdutoModel (Entidade)
+→ ProdutoModel
 
 **Atributos ProdutoModel:**
 
@@ -51,22 +51,24 @@ IDE NetBeans 26;
 
  ## Arquitetura
 
-Arquitetura em **camadas** com:
+Arquitetura em **camadas** com os seguintes folders:
 
-→ Produto (Model/Entity)
+→ Model (aonde estarão as classes marcadas com @Entity)
 
-→ ProdutoRequestDTO (**requisição** do usuário não conterá todos os atributos referentes ao Model - apenas nome, preco e quantidade - porém a **resposta** ao usuário conterá todos os campos, incluindo Id, dataAdicao e dataModificacao)
+→ DTO (possuirá sub-folders representando os RequestDTO e ResponseDTO para cada Model) 
 
-→ ProdutoResponseDTO
+→ Mapper (conterá os mappers que converterão DTOs → Model e vice-versa)
 
-→ ProdutoController
+→ Controller
 
-→ ProdutoService
+→ Service
 
-→ ProdutoRepository
+→ Repository
 
 
 ## Endpoints REST
+
+**Produtos**
 
 POST /adicionarProduto - Adicionar um novo produto ✅️ 
 
