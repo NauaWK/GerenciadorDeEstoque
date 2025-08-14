@@ -72,7 +72,7 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 **Requisitos:**
 
--Java 17+
+-Java 21+
 
 -Maven
 
