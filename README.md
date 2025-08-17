@@ -83,7 +83,7 @@ Swagger UI: http://localhost:8080/swagger-ui/index.html
 
 Console do banco H2: http://localhost:8080/h2-console
 
-→ Configurações para acessar o banco ao acessá-lo:
+→ Configurações para acessar o banco:
 
 JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
 
