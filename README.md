@@ -75,18 +75,19 @@ Para todas as entidades do projeto estão previstas, no mínimo, as 4 operaçõe
 
 **URLs principais:**
 
-→ Após iniciar a aplicação, você pode acessar:
+→ Após iniciar a aplicação, você pode acessar o Swagger para visualização dos endpoints da aplicação e executar requisições:
 
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 
+→ E também acessar o banco de dados local:
 Console do banco H2: http://localhost:8080/h2-console
 
+→ Configurações para acessar o banco ao acessá-lo:
 JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
-
 Usuário: sa
-
 Senha: (deixe em branco ou conforme configurado)
 
+*Importante: como o banco H2 permanece na memória da máquina, ao reiniciar o programa ele será reiniciado também.*
 
 ## OBSERVAÇÕES ⚠️
 
