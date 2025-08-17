@@ -80,9 +80,11 @@ Para todas as entidades do projeto estão previstas, no mínimo, as 4 operaçõe
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 
 → E também acessar o banco de dados local:
+
 Console do banco H2: http://localhost:8080/h2-console
 
 → Configurações para acessar o banco ao acessá-lo:
+
 JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
 Usuário: sa
 Senha: (deixe em branco ou conforme configurado)
