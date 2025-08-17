@@ -86,7 +86,9 @@ Console do banco H2: http://localhost:8080/h2-console
 → Configurações para acessar o banco ao acessá-lo:
 
 JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
+
 Usuário: sa
+
 Senha: (deixe em branco ou conforme configurado)
 
 *Importante: como o banco H2 permanece na memória da máquina, ao reiniciar o programa ele será reiniciado também.*
