@@ -3,7 +3,7 @@
 
 ## Objetivo deste projeto
 
-Minha primeira aplicação backend usando Java + SpringBoot. Quero por em prática meus conhecimentos teóricos desenvolvendo um sisteminha simples para fins de estudo.
+Minha primeira aplicação backend usando Java + SpringBoot. Quero por em prática meus conhecimentos teóricos desenvolvendo um sistema simples para fins de estudo.
 
 
 ## Sobre
@@ -34,19 +34,7 @@ IDE NetBeans 26;
 
 → Produto
 
-**Atributos ProdutoModel:**
-
-→ Id
-
-→ nome
-
-→ preco
-
-→ quantidade
-
-→ dataAdicao
-
-→ dataModificacao
+→ Categoria
 
 
  ## Arquitetura
@@ -68,23 +56,13 @@ Arquitetura em **camadas** com os seguintes folders:
 
 ## Endpoints REST
 
-**Produtos**
-
-POST /adicionarProduto - Adicionar um novo produto ✅️ 
-
-GET /listarProdutos - Consultar os produtos do estoque ✅️
-
-GET /listarProdutos/{id} - Consultar um produto específico pelo ID ✅️
-
-PUT /atualizarProduto/{id} - Atualizar um produto existente ✅️
-
-DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
+Para todas as entidades do projeto estão previstas, no mínimo, as 4 operações básicas de CRUD.
 
 ## Como rodar a aplicação
 
 **Requisitos:**
 
--Java 17+
+-Java 21+
 
 -Maven
 
@@ -97,11 +75,15 @@ DELETE /deletarProduto/{id} - Deletar um produto existente ✅️
 
 **URLs principais:**
 
-→ Após iniciar a aplicação, você pode acessar:
+→ Após iniciar a aplicação, você pode acessar o Swagger para visualização dos endpoints da aplicação e executar requisições:
 
 Swagger UI: http://localhost:8080/swagger-ui/index.html
 
+→ E também acessar o banco de dados local:
+
 Console do banco H2: http://localhost:8080/h2-console
+
+→ Configurações para acessar o banco:
 
 JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
 
@@ -109,7 +91,8 @@ Usuário: sa
 
 Senha: (deixe em branco ou conforme configurado)
 
+*Importante: como o banco H2 permanece na memória da máquina, ao reiniciar o programa ele será reiniciado também.*
 
 ## OBSERVAÇÕES ⚠️
 
-*Este projeto foi desenvolvido como parte de meus estudos em backend com Java e Spring Boot. Embora seja uma aplicação simples e com escopo genérico, seu objetivo principal é consolidar conhecimentos em arquitetura de APIs REST, persistência com Spring Data JPA e boas práticas de desenvolvimento. Futuramente, pretendo expandir suas funcionalidades e aplicar conceitos mais avançados conforme evoluo tecnicamente.*
+*Este projeto **ainda está em desenvolvimento** e faz parte de meus estudos em backend com Java e Spring Boot. Embora seja uma aplicação simples e com escopo genérico, seu objetivo principal é consolidar conhecimentos em arquitetura de APIs REST, persistência com Spring Data JPA e boas práticas de desenvolvimento. Futuramente, pretendo expandir suas funcionalidades e aplicar conceitos mais avançados conforme evoluo tecnicamente.*
