@@ -30,9 +30,9 @@ public class Produto {
     private LocalDateTime dataModificacao;
     
     //vários produtos para 1 categoria
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private Long categoriaId;
+    private Categoria categoria;
     
     
     //métodos utilitários para formatar a data e hora de criação e modificação de objetos no banco
@@ -49,11 +49,11 @@ public class Produto {
     
     public Produto(){}
     
-    public Produto(String nome, BigDecimal preco, int quantidade, Long categoriaId){
+    public Produto(String nome, BigDecimal preco, int quantidade, Categoria categoria){
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
-        this.categoriaId = categoriaId;
+        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -100,8 +100,8 @@ public class Produto {
         this.dataModificacao = dataModificacao;
     }
     
-    public Long getCategoria(){
-        return categoriaId;
+    public Categoria getCategoria(){
+        return categoria;
     } 
     
 }

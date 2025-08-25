@@ -28,25 +28,24 @@ public class ProdutoServices {
         produtoRepository.save(produto);
     }
     
-    //acessando todos os produtos do Repository para a rota GET /listarProdutos
+    //acessando todos os produtos do Repository
     public List<Produto> listarProdutos(){
         return produtoRepository.findAll();
     }
     
-    //buscando um produto no banco pelo ID pela rota GET /listarProdutos/id
-    
+    //buscando um produto no banco pelo ID   
     public ResponseEntity<ProdutoResponseDTO> listarProdutoPorId(Long id){
         Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));      
         return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));      
     }
        
-    //atualizando um produto com a rota PUT /atualizarProduto/id
+    //atualizando um produto com a rota PUT
     public ResponseEntity<ProdutoResponseDTO> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
         Produto produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         
-        //se estiver presente no banco altera os dados;
+        //se estiver presente no banco altera os dados
         produtoExistente.setNome(novoProdutoRequest.nome());
         produtoExistente.setPreco(novoProdutoRequest.preco());
         produtoExistente.setQuantidade(novoProdutoRequest.quantidade()); 
@@ -55,11 +54,10 @@ public class ProdutoServices {
         return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
     
-    //deletando um produto com a rota DELETE /deletarProduto/id
-    public ResponseEntity<String> deletarProduto(Long id){
-        Produto produtoSelecionado = produtoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    //deletando um produto com a rota DELETE
+    public ResponseEntity<?> deletarProduto(Long id){
+        produtoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         produtoRepository.deleteById(id);
-        return ResponseEntity.ok().body("Produto deletado com sucesso:\n" + produtoMapper.convertProdutoToDTO(produtoSelecionado));
+        return ResponseEntity.noContent().build();
     }
 }

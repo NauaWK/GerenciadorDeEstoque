@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>PrimeiroProjetoSpring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PrimeiroProjetoSpring</name>
+	<name>GerenciadorEstoque</name>
 	<description>Testando pela primeira vez o Spring Boot</description>
 	<url/>
 	<licenses>

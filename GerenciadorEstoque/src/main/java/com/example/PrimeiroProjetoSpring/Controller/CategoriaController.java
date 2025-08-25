@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/estoque")
 public class CategoriaController {
     
     private final CategoriaMapper categoriaMapper;
@@ -21,16 +21,13 @@ public class CategoriaController {
     
     public CategoriaController(CategoriaServices categoriaService, CategoriaMapper categoriaMapper){
         this.categoriaMapper = categoriaMapper;
-        this.categoriaService = categoriaService;
-        
+        this.categoriaService = categoriaService;    
     }  
     
-    @PostMapping("/adicionarCategoria")
+    @PostMapping("/categorias")
     public ResponseEntity<CategoriaResponseDTO> adicionarCategoria (CategoriaRequestDTO categoriaRequest){
-        Categoria categoriaSalva = categoriaMapper.convertDtoToModel(categoriaRequest);
+        Categoria categoriaSalva = categoriaMapper.convertDtoToCategoria(categoriaRequest);
         categoriaService.adicionarCategoria(categoriaSalva);           
-        return ResponseEntity.created(URI.create("/categoria/adicionarCategoria/" + categoriaSalva.getId())).body(categoriaMapper.convertCategoriaToDTO(categoriaSalva));  
-        
-    }
-     
+        return ResponseEntity.created(URI.create("/estoque/categorias/" + categoriaSalva.getId())).body(categoriaMapper.convertCategoriaToDTO(categoriaSalva));          
+    }    
 }
