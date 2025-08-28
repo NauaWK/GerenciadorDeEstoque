@@ -47,7 +47,7 @@ public class ProdutoController {
     }
        
     @GetMapping("/produtos")
-    public List<Produto> listarProdutos(){
+    public List<ProdutoResponseDTO> listarProdutos(){
         return produtoServices.listarProdutos(); 
     }
     

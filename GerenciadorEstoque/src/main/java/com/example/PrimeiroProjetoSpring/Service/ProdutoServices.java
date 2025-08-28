@@ -7,6 +7,7 @@ import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,19 @@ public class ProdutoServices {
     }
     
     //acessando todos os produtos do Repository
-    public List<Produto> listarProdutos(){
-        return produtoRepository.findAll();
+    public List<ProdutoResponseDTO> listarProdutos(){
+        List<Produto> produtos = produtoRepository.findAll();
+        //convertendo cada Produto em ProdutoResponseDTO
+        List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
+            produto.getId(),
+            produto.getNome(), 
+            produto.getPreco(), 
+            produto.getQuantidade(),
+            produto.getDataAdicao(),
+            produto.getDataModificacao(),
+            produto.getCategoria().getId())).collect(Collectors.toList());
+        
+        return responseDtos;
     }
     
     //buscando um produto no banco pelo ID   
@@ -48,8 +60,7 @@ public class ProdutoServices {
         //se estiver presente no banco altera os dados
         produtoExistente.setNome(novoProdutoRequest.nome());
         produtoExistente.setPreco(novoProdutoRequest.preco());
-        produtoExistente.setQuantidade(novoProdutoRequest.quantidade()); 
-        
+        produtoExistente.setQuantidade(novoProdutoRequest.quantidade());      
         adicionarProduto(produtoExistente);
         return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
