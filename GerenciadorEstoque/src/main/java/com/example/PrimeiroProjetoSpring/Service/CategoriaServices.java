@@ -59,8 +59,7 @@ public class CategoriaServices {
     
     //listando produtos de uma categoria
     public List<ProdutoResponseDTO> listarProdutosDaCategoria(Long id){
-        buscarCategoria(id);
-        
+        buscarCategoria(id);        
         //acessando os produtos de uma categoria pelo ID através de um método personalizado em ProdutoRepository
         List<Produto> produtos = produtoRepository.findByCategoriaId(id);     
         
@@ -87,7 +86,7 @@ public class CategoriaServices {
         return ResponseEntity.ok().body(categoriaMapper.convertCategoriaToDto(categoriaExistente));       
     }
     
-    //deletando um produto com a rota DELETE
+    //deletando uma categoria com a rota DELETE
     public ResponseEntity<Void> deletarCategoria(Long id){
         buscarCategoria(id);
         categoriaRepository.deleteById(id);
