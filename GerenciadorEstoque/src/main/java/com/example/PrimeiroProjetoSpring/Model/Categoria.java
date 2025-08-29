@@ -19,17 +19,14 @@ public class Categoria {
     
     private String nome;
     
-    private String descricao;
-    
     //1 categoria para vários produtos
     @OneToMany(mappedBy = "categoria")
     private List<Produto> produtos;
     
     public Categoria(){}
     
-    public Categoria(String nome, String descricao){
+    public Categoria(String nome){
         this.nome = nome;
-        this.descricao = descricao;
     }
     
     public Long getId() {
@@ -42,14 +39,6 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
     
     public List<Produto> getProdutos() {

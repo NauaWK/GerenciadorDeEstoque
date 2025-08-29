@@ -29,6 +29,12 @@ public class ProdutoServices {
         produtoRepository.save(produto);
     }
     
+    //buscando um produto pelo ID
+    public Produto buscarProduto(Long id){
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria com id "+id+" não encontrada."));
+    }
+    
     //acessando todos os produtos do Repository
     public List<ProdutoResponseDTO> listarProdutos(){
         List<Produto> produtos = produtoRepository.findAll();
@@ -47,15 +53,13 @@ public class ProdutoServices {
     
     //buscando um produto no banco pelo ID   
     public ResponseEntity<ProdutoResponseDTO> listarProdutoPorId(Long id){
-        Produto produtoExistente = produtoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));      
+        Produto produtoExistente = buscarProduto(id);    
         return ResponseEntity.ok().body(produtoMapper.convertProdutoToDTO(produtoExistente));      
     }
        
     //atualizando um produto com a rota PUT
     public ResponseEntity<ProdutoResponseDTO> atualizarProduto(Long id, ProdutoRequestDTO novoProdutoRequest){
-        Produto produtoExistente = produtoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Produto produtoExistente = buscarProduto(id);
         
         //se estiver presente no banco altera os dados
         produtoExistente.setNome(novoProdutoRequest.nome());
@@ -66,8 +70,8 @@ public class ProdutoServices {
     }
     
     //deletando um produto com a rota DELETE
-    public ResponseEntity<?> deletarProduto(Long id){
-        produtoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Void> deletarProduto(Long id){
+        buscarProduto(id);
         produtoRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

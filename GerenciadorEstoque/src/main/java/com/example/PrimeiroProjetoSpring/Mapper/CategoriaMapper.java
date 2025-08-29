@@ -12,8 +12,7 @@ public class CategoriaMapper {
      //conversão de CategoriaRequestDTO para Categoria
     public Categoria convertDtoToCategoria(CategoriaRequestDTO categoriaRequestDTO){
         return new Categoria(
-            categoriaRequestDTO.nome(), 
-            categoriaRequestDTO.descricao()
+            categoriaRequestDTO.nome()
         );      
     }  
     
@@ -21,8 +20,7 @@ public class CategoriaMapper {
     public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),
-            categoria.getNome(), 
-            categoria.getDescricao()
+            categoria.getNome()
         );
     }        
 }

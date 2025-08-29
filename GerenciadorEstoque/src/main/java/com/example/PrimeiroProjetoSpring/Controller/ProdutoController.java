@@ -62,7 +62,7 @@ public class ProdutoController {
     }  
     
     @DeleteMapping("/produtos/{id}")
-    public ResponseEntity<?> deletarProduto(@PathVariable Long id){
+    public ResponseEntity<Void> deletarProduto(@PathVariable Long id){
         return produtoServices.deletarProduto(id);
     }
 }
