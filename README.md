@@ -53,7 +53,7 @@ Arquitetura em **camadas** com os seguintes folders:
 
 → Repository
 
-→ Exception (em breve)
+→ Exception
 
 
 ## Endpoints REST
