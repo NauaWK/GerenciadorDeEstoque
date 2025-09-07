@@ -33,35 +33,35 @@ public class CategoriaController {
     }  
     
     @PostMapping("/categorias")
-    public ResponseEntity<CategoriaResponseDTO> adicionarCategoria (CategoriaRequestDTO categoriaRequest){
+    public ResponseEntity<CategoriaResponseDTO> addCategory (@Valid @RequestBody CategoriaRequestDTO categoriaRequest){
         Categoria categoriaSalva = categoriaMapper.convertDtoToCategoria(categoriaRequest);
-        categoriaServices.adicionarCategoria(categoriaSalva);           
+        categoriaServices.addCategory(categoriaSalva);           
         return ResponseEntity.created(URI.create("/estoque/categorias/" + categoriaSalva.getId())).body(categoriaMapper.convertCategoriaToDto(categoriaSalva));          
     }    
     
     @GetMapping("/categorias")
-    public List<CategoriaResponseDTO> listarCategorias(){
-        return categoriaServices.listarCategorias();
+    public List<CategoriaResponseDTO> listAllCategories(){
+        return categoriaServices.listAllCategories();
     }
     
     @GetMapping("/categorias/{id}")
-    public ResponseEntity<CategoriaResponseDTO> listarCategoriaPorId(@PathVariable Long id){
-        return categoriaServices.listarCategoriaPorId(id);
+    public ResponseEntity<CategoriaResponseDTO> findCategoryById(@PathVariable Long id){
+        return categoriaServices.findCategoryById(id);
     }   
     
     @GetMapping("/categorias/{id}/produtos")
-    public List<ProdutoResponseDTO> listarProdutosDaCategoria(@PathVariable Long id){
-        return categoriaServices.listarProdutosDaCategoria(id);
+    public List<ProdutoResponseDTO> listProductsByCategory(@PathVariable Long id){
+        return categoriaServices.listProductsByCategory(id);
     } 
     
     @PutMapping("/categorias/{id}")
-    public ResponseEntity<CategoriaResponseDTO> atualizarCategoria(@PathVariable Long id, @Valid @RequestBody CategoriaRequestDTO categoriaRequest){
-        return categoriaServices.atualizarCategoria(id, categoriaRequest);      
+    public ResponseEntity<CategoriaResponseDTO> updateCategory(@PathVariable Long id, @Valid @RequestBody CategoriaRequestDTO categoriaRequest){
+        return categoriaServices.updateCategory(id, categoriaRequest);      
     }  
     
     @DeleteMapping("/categorias/{id}")
-    public ResponseEntity<Void> deletarCategoria(@PathVariable Long id){
-        return categoriaServices.deletarCategoria(id);
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id){
+        return categoriaServices.deleteCategory(id);
     }
     
 }

@@ -30,18 +30,18 @@ public class CategoriaServices {
     }
     
     //adicionando uma categoria
-    public void adicionarCategoria(Categoria categoria){
+    public void addCategory(Categoria categoria){
         categoriaRepository.save(categoria);
     }
     
     //buscando uma categoria pelo ID
-    public Categoria buscarCategoria(Long id){
+    public Categoria findCategory(Long id){
         return categoriaRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria com id "+id+" não encontrada."));
     }
     
     //listar todas as categorias
-    public List<CategoriaResponseDTO> listarCategorias(){
+    public List<CategoriaResponseDTO> listAllCategories(){
         List<Categoria> categorias = categoriaRepository.findAll();
         //convertendo cada Categoria em CategoriaResponseDTO
         List<CategoriaResponseDTO> responseDtos = categorias.stream().map(categoria -> new CategoriaResponseDTO(
@@ -52,14 +52,14 @@ public class CategoriaServices {
     }      
     
     //buscando uma categoria pelo ID   
-    public ResponseEntity<CategoriaResponseDTO> listarCategoriaPorId(Long id){
-        Categoria categoriaExistente = buscarCategoria(id);     
-        return ResponseEntity.ok().body(categoriaMapper.convertCategoriaToDto(categoriaExistente));      
+    public ResponseEntity<CategoriaResponseDTO> findCategoryById(Long id){
+        Categoria categoriaExistente = findCategory(id);     
+        return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));      
     }  
     
     //listando produtos de uma categoria
-    public List<ProdutoResponseDTO> listarProdutosDaCategoria(Long id){
-        buscarCategoria(id);
+    public List<ProdutoResponseDTO> listProductsByCategory(Long id){
+        findCategory(id);
         
         //acessando os produtos de uma categoria pelo ID através de um método personalizado em ProdutoRepository
         List<Produto> produtos = produtoRepository.findByCategoriaId(id);     
@@ -78,18 +78,18 @@ public class CategoriaServices {
     }
     
     //atualizando uma categoria
-    public ResponseEntity<CategoriaResponseDTO> atualizarCategoria (Long id, CategoriaRequestDTO categoriaRequeset){
-        Categoria categoriaExistente = buscarCategoria(id);
+    public ResponseEntity<CategoriaResponseDTO> updateCategory (Long id, CategoriaRequestDTO categoriaRequest){
+        Categoria categoriaExistente = findCategory(id);
         
-        //se estiver presente altera os dados
-        categoriaExistente.setNome(categoriaRequeset.nome());     
-        adicionarCategoria(categoriaExistente);
-        return ResponseEntity.ok().body(categoriaMapper.convertCategoriaToDto(categoriaExistente));       
+        //se estiver presente, altera os dados
+        categoriaExistente.setNome(categoriaRequest.nome());     
+        addCategory(categoriaExistente);
+        return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));       
     }
     
-    //deletando um produto com a rota DELETE
-    public ResponseEntity<Void> deletarCategoria(Long id){
-        buscarCategoria(id);
+    //deletando uma categoria
+    public ResponseEntity<Void> deleteCategory(Long id){
+        findCategory(id);
         categoriaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
