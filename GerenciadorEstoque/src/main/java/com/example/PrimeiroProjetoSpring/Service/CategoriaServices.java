@@ -60,7 +60,6 @@ public class CategoriaServices {
     //listando produtos de uma categoria
     public List<ProdutoResponseDTO> listProductsByCategory(Long id){
         findCategory(id);
-        
         //acessando os produtos de uma categoria pelo ID através de um método personalizado em ProdutoRepository
         List<Produto> produtos = produtoRepository.findByCategoriaId(id);     
         
@@ -87,9 +86,9 @@ public class CategoriaServices {
         return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));       
     }
     
+
     //deletando uma categoria
     public ResponseEntity<Void> deleteCategory(Long id){
-        findCategory(id);
         categoriaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
