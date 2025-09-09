@@ -12,9 +12,9 @@ import com.example.PrimeiroProjetoSpring.Repository.CategoriaRepository;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class CategoriaServices {

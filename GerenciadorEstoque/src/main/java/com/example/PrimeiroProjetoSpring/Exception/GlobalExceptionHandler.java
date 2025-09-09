@@ -4,7 +4,6 @@ package com.example.PrimeiroProjetoSpring.Exception;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
-
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.CategoryNotFoundException;
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ObjectAlreadyExistsException;
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ProductNotFoundException;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
 
     //método utilitário para gerar Maps de resposta padronizados
     private Map<String, String> mapGenerator(String statusNumber, String message){
@@ -42,6 +40,7 @@ public class GlobalExceptionHandler {
         });        
         
         return ResponseEntity.badRequest().body(errors);
+
     }
 
     @ExceptionHandler(CategoryNotFoundException.class)
