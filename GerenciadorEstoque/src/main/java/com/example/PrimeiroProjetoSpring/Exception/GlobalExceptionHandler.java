@@ -41,11 +41,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ObjectAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> objectAlreadyExistsException (ObjectAlreadyExistsException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("400", ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("400", ex.getMessage()));
     }
     
     @ExceptionHandler(CategoryWithProductsException.class)
     public ResponseEntity<ErrorResponse> categoryWithProductsException (CategoryWithProductsException ex){      
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("400", ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("400", ex.getMessage()));
     } 
 }
