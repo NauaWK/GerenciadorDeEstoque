@@ -1,12 +1,11 @@
 package com.example.PrimeiroProjetoSpring.Exception.customExceptions;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ProductNotFoundException extends RuntimeException {
-    public ProductNotFoundException(String message) {
+public class ObjectNotFoundException extends RuntimeException {
+    public ObjectNotFoundException(String message) {
         super(message);
     }
 }

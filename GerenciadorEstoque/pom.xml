@@ -26,19 +26,12 @@
 		<tag/>
 		<url/>
 	</scm>
-<<<<<<< HEAD
-    <properties>
-        <java.version>21</java.version>
-        <start-class>com.example.PrimeiroProjetoSpring.PrimeiroProjetoSpringApplication</start-class>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
-    </properties>
-=======
+
 	<properties>
 		<java.version>21</java.version>
                 <start-class>com.example.PrimeiroProjetoSpring.PrimeiroProjetoSpringApplication</start-class>
 	</properties>
->>>>>>> ea26babe889a98d825cc8a3479df49f31febd31f
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

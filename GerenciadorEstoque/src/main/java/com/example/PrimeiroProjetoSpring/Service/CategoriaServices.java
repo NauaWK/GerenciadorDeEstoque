@@ -4,7 +4,8 @@ package com.example.PrimeiroProjetoSpring.Service;
 import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaResponseDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.PrimeiroProjetoSpring.Exception.customExceptions.CategoryNotFoundException;
+import com.example.PrimeiroProjetoSpring.Exception.customExceptions.CategoryWithProductsException;
+import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ObjectNotFoundException;
 import com.example.PrimeiroProjetoSpring.Mapper.CategoriaMapper;
 import com.example.PrimeiroProjetoSpring.Model.Categoria;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
@@ -37,7 +38,7 @@ public class CategoriaServices {
     //buscando uma categoria pelo ID
     public Categoria findCategory(Long id){
         return categoriaRepository.findById(id)
-                .orElseThrow(() -> new CategoryNotFoundException("Categoria com id "+id+" não encontrada."));
+                .orElseThrow(() -> new ObjectNotFoundException("Categoria com id "+id+" não encontrada."));
     }
 
     public boolean categoryAlreadyExists(String nome){
@@ -94,6 +95,10 @@ public class CategoriaServices {
 
     //deletando uma categoria
     public ResponseEntity<Void> deleteCategory(Long id){
+        if(produtoRepository.existsByCategoriaId(id)){
+            throw new CategoryWithProductsException("Não é possível deletar esta categoria no momento pois há pelo menos 1 produto associado a ela.");
+        }
+        findCategory(id);
         categoriaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

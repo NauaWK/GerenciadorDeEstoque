@@ -3,7 +3,7 @@ package com.example.PrimeiroProjetoSpring.Service;
 
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ProductNotFoundException;
+import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ObjectNotFoundException;
 import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Repository.ProdutoRepository;
@@ -32,7 +32,7 @@ public class ProdutoServices {
     //buscando um produto pelo ID
     private Produto findProduct(Long id) {
         return produtoRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Produto com id " + id + " não encontrado."));
+                .orElseThrow(() -> new ObjectNotFoundException("Produto com id "+id+" não encontrado."));
     }
 
     public boolean productAlreadyExists(String nome) {
