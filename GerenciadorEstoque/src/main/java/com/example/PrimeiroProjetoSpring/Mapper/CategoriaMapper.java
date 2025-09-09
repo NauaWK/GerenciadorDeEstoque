@@ -16,7 +16,7 @@ public class CategoriaMapper {
         );      
     }  
     
-    //conversão de Categoria para CategoraRequestDTO
+    //conversão de Categoria para CategoriaResponseDTO
     public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),
