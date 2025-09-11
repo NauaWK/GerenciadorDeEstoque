@@ -25,8 +25,11 @@ public class ProdutoServices {
     }
 
     //método utilitário para adicionar um produto ao repository
-    public void addProduct(Produto produto) {
+    public void addProduct(Produto produto) {          
         produtoRepository.save(produto);
+        
+        //adicionando e atualizando a quantidade de produtos da Categoria
+        produto.getCategoria().adicionarProduto(produto);
     }
 
     //buscando um produto pelo ID
@@ -61,7 +64,7 @@ public class ProdutoServices {
         return ResponseEntity.ok(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
 
-    //atualizando um produto com a rota PUT
+    //atualizando um produto
     public ResponseEntity<ProdutoResponseDTO> updateProduct (Long id, ProdutoRequestDTO novoProdutoRequest){
         Produto produtoExistente = findProduct(id);
 
@@ -73,10 +76,11 @@ public class ProdutoServices {
         return ResponseEntity.ok(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
 
-    //deletando um produto com a rota DELETE
+    //deletando um produto
     public ResponseEntity<Void> deleteProduct (Long id){
-        findProduct(id);
+        Produto produto = findProduct(id);    
         produtoRepository.deleteById(id);
+        produto.getCategoria().removerProduto(produto);
         return ResponseEntity.noContent().build();
     }
 }

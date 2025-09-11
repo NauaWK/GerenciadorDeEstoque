@@ -52,7 +52,8 @@ public class CategoriaServices {
         //convertendo cada Categoria em CategoriaResponseDTO
         List<CategoriaResponseDTO> responseDtos = categorias.stream().map(categoria -> new CategoriaResponseDTO(
             categoria.getId(),
-            categoria.getNome())).collect(Collectors.toList());
+            categoria.getNome(),
+            categoria.getQuantidade())).collect(Collectors.toList());
         
         return responseDtos;
     }      
@@ -66,6 +67,7 @@ public class CategoriaServices {
     //listando produtos de uma categoria
     public List<ProdutoResponseDTO> listProductsByCategory(Long id){
         findCategory(id);
+        
         //acessando os produtos de uma categoria pelo ID através de um método personalizado em ProdutoRepository
         List<Produto> produtos = produtoRepository.findByCategoriaId(id);     
         

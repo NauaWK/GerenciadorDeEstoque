@@ -20,7 +20,8 @@ public class CategoriaMapper {
     public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),
-            categoria.getNome()
+            categoria.getNome(),
+            categoria.getQuantidade()
         );
     }        
 }
