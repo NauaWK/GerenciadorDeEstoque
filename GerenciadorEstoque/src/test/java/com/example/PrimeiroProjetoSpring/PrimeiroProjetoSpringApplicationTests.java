@@ -22,10 +22,10 @@ class PrimeiroProjetoSpringApplicationTests {
             Produto produto = new Produto("Café", BigDecimal.valueOf(20.5), 20, categoria);
                      
             produtoRepository.save(produto);
+		
             categoria.adicionarProduto(produto);
-
-            Assertions.assertEquals(1, categoria.getQuantidade());           
-            
+            Assertions.assertEquals(1, categoria.getQuantidade());   
+		
             categoria.removerProduto(produto);
             Assertions.assertEquals(0, categoria.getQuantidade());
             
