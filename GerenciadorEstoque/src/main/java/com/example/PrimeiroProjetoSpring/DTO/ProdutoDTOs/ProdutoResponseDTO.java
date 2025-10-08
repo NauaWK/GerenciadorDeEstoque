@@ -10,6 +10,4 @@ public record ProdutoResponseDTO(Long id,
         int quantidade, 
         LocalDateTime dataAdicao, 
         LocalDateTime dataModificacao, 
-        Long categoriaId
-        
-        ){}
+        Long categoriaId ){}
