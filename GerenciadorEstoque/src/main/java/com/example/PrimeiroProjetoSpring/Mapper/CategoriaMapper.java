@@ -9,14 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoriaMapper {
     
-     //conversão de CategoriaRequestDTO para Categoria
     public Categoria convertDtoToCategoria(CategoriaRequestDTO categoriaRequestDTO){
         return new Categoria(
             categoriaRequestDTO.nome()
         );      
     }  
     
-    //conversão de Categoria para CategoriaResponseDTO
     public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),
