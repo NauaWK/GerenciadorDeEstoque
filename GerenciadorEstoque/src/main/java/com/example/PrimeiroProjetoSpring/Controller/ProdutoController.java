@@ -7,7 +7,6 @@ import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Mapper.ProdutoMapper;
 import com.example.PrimeiroProjetoSpring.Model.Categoria;
-import com.example.PrimeiroProjetoSpring.Repository.CategoriaRepository;
 import com.example.PrimeiroProjetoSpring.Service.CategoriaServices;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -32,8 +31,7 @@ public class ProdutoController {
     private final ProdutoMapper produtoMapper;
     
     public ProdutoController(ProdutoServices produtoServices, 
-            ProdutoMapper produtoMapper, 
-            CategoriaRepository categoriaRepository,
+            ProdutoMapper produtoMapper,
             CategoriaServices categoriaServices){
         
         this.produtoServices = produtoServices;
