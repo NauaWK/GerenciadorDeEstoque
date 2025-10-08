@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProdutoMapper {
     
-    //conversão de ProdutoRequestDTO para Produto
     public Produto convertDtoToProduto(ProdutoRequestDTO produtoRequestDTO, Categoria categoria){
         return new Produto(
             produtoRequestDTO.nome(), 
@@ -20,7 +19,6 @@ public class ProdutoMapper {
         );      
     }  
     
-    //conversão de Produto para ProdutoResponseDTO
     public ProdutoResponseDTO convertProdutoToDTO(Produto produto){
         return new ProdutoResponseDTO(
                 produto.getId(),
