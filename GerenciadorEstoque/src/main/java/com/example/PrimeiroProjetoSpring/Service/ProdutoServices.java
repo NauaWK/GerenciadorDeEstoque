@@ -24,15 +24,13 @@ public class ProdutoServices {
         this.produtoMapper = produtoMapper;
     }
 
-    //método utilitário para adicionar um produto ao repository
     public void addProduct(Produto produto) {          
         produtoRepository.save(produto);
         
-        //adicionando e atualizando a quantidade de produtos da Categoria
+        //adicionando e atualizando a quantidade de produtos na categoria do produto
         produto.getCategoria().adicionarProduto(produto);
     }
 
-    //buscando um produto pelo ID
     private Produto findProduct(Long id) {
         return produtoRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Produto com id "+id+" não encontrado."));
@@ -42,9 +40,9 @@ public class ProdutoServices {
         return produtoRepository.existsByNome(nome);
     }
 
-    //acessando todos os produtos do Repository
     public List<ProdutoResponseDTO> listAllProducts () {
         List<Produto> produtos = produtoRepository.findAll();
+        
         //convertendo cada Produto em ProdutoResponseDTO
         List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
                 produto.getId(),
@@ -58,13 +56,11 @@ public class ProdutoServices {
         return responseDtos;
     }
 
-    //buscando um produto no banco pelo ID
     public ResponseEntity<ProdutoResponseDTO> findProductById (Long id){
         Produto produtoExistente = findProduct(id);
         return ResponseEntity.ok(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
 
-    //atualizando um produto
     public ResponseEntity<ProdutoResponseDTO> updateProduct (Long id, ProdutoRequestDTO novoProdutoRequest){
         Produto produtoExistente = findProduct(id);
 
@@ -76,7 +72,6 @@ public class ProdutoServices {
         return ResponseEntity.ok(produtoMapper.convertProdutoToDTO(produtoExistente));
     }
 
-    //deletando um produto
     public ResponseEntity<Void> deleteProduct (Long id){
         Produto produto = findProduct(id);    
         produtoRepository.deleteById(id);
