@@ -26,7 +26,7 @@ public class ProdutoServices {
     public void addProduct(Produto produto) {          
         produtoRepository.save(produto);
         
-        //adicionando e atualizando a quantidade de produtos da Categoria
+        //adicionando e atualizando a quantidade de produtos na categoria do produto
         produto.getCategoria().adicionarProduto(produto);
     }
 
@@ -47,6 +47,7 @@ public class ProdutoServices {
 
     public List<ProdutoResponseDTO> listAllProducts () {
         List<Produto> produtos = produtoRepository.findAll();
+        
         //convertendo cada Produto em ProdutoResponseDTO
         List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
                 produto.getId(),

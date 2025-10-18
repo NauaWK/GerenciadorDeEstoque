@@ -40,17 +40,18 @@ public class CategoriaServices {
     }
        
     public ResponseEntity<CategoriaResponseDTO> findCategoryById(Long id){
-        Categoria categoriaExistente = findCategory(id);     
-        return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));      
+        Categoria categoriaExistente = findCategory(id);    
+        CategoriaResponseDTO dto = categoriaMapper.convertCategoriaToDto(categoriaExistente);
+        return ResponseEntity.ok(dto);      
     }  
 
     public boolean categoryAlreadyExists(String nome){
         return categoriaRepository.existsByNome(nome);
-
     }
     
     public List<CategoriaResponseDTO> listAllCategories(){
         List<Categoria> categorias = categoriaRepository.findAll();
+        
         //convertendo cada Categoria em CategoriaResponseDTO
         List<CategoriaResponseDTO> responseDtos = categorias.stream().map(categoria -> new CategoriaResponseDTO(
             categoria.getId(),
@@ -59,7 +60,6 @@ public class CategoriaServices {
         
         return responseDtos;
     }      
-    
 
     public List<ProdutoResponseDTO> listProductsByCategory(Long id){
         findCategory(id);
@@ -99,4 +99,3 @@ public class CategoriaServices {
     }
     
 }
-

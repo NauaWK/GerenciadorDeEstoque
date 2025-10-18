@@ -46,7 +46,6 @@ public class ProdutoController {
         //verificando se a categoria selecionada no requestDTO existe através do ID
         Categoria categoriaExistente = categoriaServices.findCategory(produtoRequest.categoriaId());
 
-        //verificando se o produto já existe no banco pelo nome
         if(produtoServices.productAlreadyExists(produtoRequest.nome())){
             throw new ObjectAlreadyExistsException("O produto com nome "+ produtoRequest.nome()+" já existe.");
         }

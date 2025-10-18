@@ -10,22 +10,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
-class PrimeiroProjetoSpringApplicationTests {
-    
-    @MockitoBean
-    private ProdutoRepository produtoRepository;
+class PrimeiroProjetoSpringApplicationTests { 
       
 	@Test
 	void deveAtualizarQuantidadeProdutosDeUmaCategoria() {
                        
             Categoria categoria = new Categoria("Alimentos");
-            Produto produto = new Produto("Café", BigDecimal.valueOf(20.5), 20, categoria);
-                     
-            produtoRepository.save(produto);
+            Produto produto = new Produto("Café", BigDecimal.valueOf(20.5), 20, categoria);                
+	
             categoria.adicionarProduto(produto);
-
-            Assertions.assertEquals(1, categoria.getQuantidade());           
-            
+            Assertions.assertEquals(1, categoria.getQuantidade());   
+		
             categoria.removerProduto(produto);
             Assertions.assertEquals(0, categoria.getQuantidade());
             
