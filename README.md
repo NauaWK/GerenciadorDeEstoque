@@ -36,6 +36,8 @@ IDE NetBeans 26;
 
 → Categoria
 
+→ MovimentacaoEstoque (em desenvolvimento)
+
 
  ## Arquitetura
 
@@ -43,9 +45,11 @@ Arquitetura em **camadas** com os seguintes folders:
 
 → Model (aonde estarão as classes marcadas com @Entity)
 
+→ Utils (possuirá folders/arquivos utilitários, como mappers, enums etc)
+
 → DTO (possuirá sub-folders representando os RequestDTO e ResponseDTO para cada Model) 
 
-→ Mapper (conterá os mappers que converterão DTOs → Model e vice-versa)
+→ Mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
 
 → Controller
 
@@ -53,12 +57,12 @@ Arquitetura em **camadas** com os seguintes folders:
 
 → Repository
 
-→ Exception
+→ Exception (tratamento centralizado de exceções)
 
 
 ## Endpoints REST
 
-Para todas as entidades do projeto estão previstas, no mínimo, as 4 operações básicas de CRUD.
+Para a maioria das entidades do projeto estão previstas 2 a 4 operações distintas de CRUD.
 
 ## Como rodar a aplicação
 
