@@ -1,5 +1,5 @@
 
-package com.example.PrimeiroProjetoSpring.Mapper;
+package com.example.PrimeiroProjetoSpring.Utils.Mappers;
 
 import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaResponseDTO;
@@ -9,14 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoriaMapper {
     
-     //conversão de CategoriaRequestDTO para Categoria
     public Categoria convertDtoToCategoria(CategoriaRequestDTO categoriaRequestDTO){
         return new Categoria(
             categoriaRequestDTO.nome()
         );      
     }  
     
-    //conversão de Categoria para CategoriaResponseDTO
     public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),

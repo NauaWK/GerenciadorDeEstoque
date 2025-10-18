@@ -4,7 +4,9 @@ package com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record ProdutoResponseDTO(Long id, 
+public record ProdutoResponseDTO(
+        
+        Long id, 
         String nome, 
         BigDecimal preco, 
         int quantidade, 

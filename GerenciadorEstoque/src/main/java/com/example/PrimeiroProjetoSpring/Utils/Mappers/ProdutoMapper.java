@@ -1,5 +1,5 @@
 
-package com.example.PrimeiroProjetoSpring.Mapper;
+package com.example.PrimeiroProjetoSpring.Utils.Mappers;
 
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProdutoMapper {
     
-    //conversão de ProdutoRequestDTO para Produto
     public Produto convertDtoToProduto(ProdutoRequestDTO produtoRequestDTO, Categoria categoria){
         return new Produto(
             produtoRequestDTO.nome(), 
@@ -20,7 +19,6 @@ public class ProdutoMapper {
         );      
     }  
     
-    //conversão de Produto para ProdutoResponseDTO
     public ProdutoResponseDTO convertProdutoToDTO(Produto produto){
         return new ProdutoResponseDTO(
                 produto.getId(),

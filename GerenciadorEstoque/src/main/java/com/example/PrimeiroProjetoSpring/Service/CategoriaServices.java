@@ -6,7 +6,7 @@ import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaResponseDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.CategoryWithProductsException;
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ObjectNotFoundException;
-import com.example.PrimeiroProjetoSpring.Mapper.CategoriaMapper;
+import com.example.PrimeiroProjetoSpring.Utils.Mappers.CategoriaMapper;
 import com.example.PrimeiroProjetoSpring.Model.Categoria;
 import com.example.PrimeiroProjetoSpring.Model.Produto;
 import com.example.PrimeiroProjetoSpring.Repository.CategoriaRepository;
@@ -30,23 +30,25 @@ public class CategoriaServices {
         this.produtoRepository = produtoRepository;
     }
     
-    //adicionando uma categoria
     public void addCategory(Categoria categoria){
         categoriaRepository.save(categoria);
     }
     
-    //buscando uma categoria pelo ID
     public Categoria findCategory(Long id){
         return categoriaRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria com id "+id+" não encontrada."));
     }
+       
+    public ResponseEntity<CategoriaResponseDTO> findCategoryById(Long id){
+        Categoria categoriaExistente = findCategory(id);     
+        return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));      
+    }  
 
     public boolean categoryAlreadyExists(String nome){
         return categoriaRepository.existsByNome(nome);
 
     }
     
-    //listar todas as categorias
     public List<CategoriaResponseDTO> listAllCategories(){
         List<Categoria> categorias = categoriaRepository.findAll();
         //convertendo cada Categoria em CategoriaResponseDTO
@@ -58,13 +60,7 @@ public class CategoriaServices {
         return responseDtos;
     }      
     
-    //buscando uma categoria pelo ID   
-    public ResponseEntity<CategoriaResponseDTO> findCategoryById(Long id){
-        Categoria categoriaExistente = findCategory(id);     
-        return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));      
-    }  
-    
-    //listando produtos de uma categoria
+
     public List<ProdutoResponseDTO> listProductsByCategory(Long id){
         findCategory(id);
         
@@ -84,7 +80,6 @@ public class CategoriaServices {
         return responseDtos;
     }
     
-    //atualizando uma categoria
     public ResponseEntity<CategoriaResponseDTO> updateCategory (Long id, CategoriaRequestDTO categoriaRequest){
         Categoria categoriaExistente = findCategory(id);
         
@@ -94,8 +89,6 @@ public class CategoriaServices {
         return ResponseEntity.ok(categoriaMapper.convertCategoriaToDto(categoriaExistente));       
     }
     
-
-    //deletando uma categoria
     public ResponseEntity<Void> deleteCategory(Long id){
         if(produtoRepository.existsByCategoriaId(id)){
             throw new CategoryWithProductsException("Não é possível deletar esta categoria no momento pois há pelo menos 1 produto associado a ela.");

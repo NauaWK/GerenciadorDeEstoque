@@ -5,7 +5,7 @@ import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.PrimeiroProjetoSpring.DTO.CategoriaDTOs.CategoriaResponseDTO;
 import com.example.PrimeiroProjetoSpring.DTO.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.PrimeiroProjetoSpring.Exception.customExceptions.ObjectAlreadyExistsException;
-import com.example.PrimeiroProjetoSpring.Mapper.CategoriaMapper;
+import com.example.PrimeiroProjetoSpring.Utils.Mappers.CategoriaMapper;
 import com.example.PrimeiroProjetoSpring.Model.Categoria;
 import com.example.PrimeiroProjetoSpring.Service.CategoriaServices;
 import jakarta.validation.Valid;
