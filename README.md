@@ -8,7 +8,7 @@ Minha primeira aplicação backend usando Java + SpringBoot. Quero por em práti
 
 ## Sobre
 
-A princípio, o projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário criar e manipular um estoque genérico de produtos de sua preferência.
+O projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo o usuário criar e manipular um estoque genérico de produtos de sua preferência.
 
 
  ## Ferramentas Utilizadas
@@ -27,7 +27,7 @@ Gerenciador de dependências Maven;
 
 Versionamento de código com Git;
 
-IDE NetBeans 26;
+Criação de imagem da aplicação com Docker;
 
 
 ## Models
@@ -41,7 +41,7 @@ IDE NetBeans 26;
 
  ## Arquitetura
 
-Arquitetura em **camadas** com os seguintes folders:
+Arquitetura em camadas com os seguintes folders:
 
 → Model (aonde estarão as classes marcadas com @Entity)
 
@@ -76,26 +76,26 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto
-3. Execute o comando: mvn spring-boot:run
-4. Caso esteja utilizando uma IDE como IntelliJ, Eclipse ou NetBeans, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication
+3. Execute o comando: `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
+4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot:1.1` no terminal.
 
 **URLs principais:**
 
 → Após iniciar a aplicação, você pode acessar o Swagger para visualização dos endpoints da aplicação e executar requisições:
 
-Swagger UI: http://localhost:8080/swagger-ui/index.html
+*Swagger UI*: http://localhost:8080/swagger-ui/index.html
 
-→ E também acessar o banco de dados local:
+→ E também acessar a interface do banco H2 no navegador:
 
-Console do banco H2: http://localhost:8080/h2-console
+*Console do banco H2*: http://localhost:8080/h2-console
 
 → Configurações para acessar o banco:
 
-JDBC URL: jdbc:h2:mem:EstoqueDeProdutos
+*JDBC URL*: jdbc:h2:mem:EstoqueDeProdutos
 
-Usuário: sa
+*Usuário*: sa
 
-Senha: (deixe em branco ou conforme configurado)
+*Senha*: (deixe em branco ou conforme configurado)
 
 *Importante: como o banco H2 permanece na memória da máquina, ao reiniciar o programa ele será reiniciado também.*
 
