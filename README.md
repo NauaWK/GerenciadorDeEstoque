@@ -30,7 +30,7 @@ Versionamento de código com Git;
 Criação de imagem da aplicação com Docker;
 
 
-## Models
+## Entidades
 
 → Produto
 
