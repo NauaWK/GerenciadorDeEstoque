@@ -79,13 +79,11 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 3. Execute o comando `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
 4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot` no terminal.
 
-**URLs principais:**
+**Extra:**
 
 → Após iniciar a aplicação, você pode acessar o Swagger para visualização dos endpoints da aplicação e executar requisições:
 
 *Swagger UI*: `http://localhost:8080/swagger-ui/index.html`
-
-*Importante: como o banco H2 permanece na memória, ao reiniciar o programa ele será reiniciado também.*
 
 ## OBSERVAÇÕES ⚠️
 
