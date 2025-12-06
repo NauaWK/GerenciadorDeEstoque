@@ -76,28 +76,16 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto no terminal
-3. Execute o comando: `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
+3. Execute o comando `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
 4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot` no terminal.
 
 **URLs principais:**
 
 → Após iniciar a aplicação, você pode acessar o Swagger para visualização dos endpoints da aplicação e executar requisições:
 
-*Swagger UI*: http://localhost:8080/swagger-ui/index.html
+*Swagger UI*: `http://localhost:8080/swagger-ui/index.html`
 
-→ E também acessar a interface do banco H2 no navegador:
-
-*Console do banco H2*: http://localhost:8080/h2-console
-
-→ Configurações para acessar o banco:
-
-*JDBC URL*: jdbc:h2:mem:EstoqueDeProdutos
-
-*Usuário*: sa
-
-*Senha*: (deixe em branco ou conforme configurado)
-
-*Importante: como o banco H2 permanece na memória da máquina, ao reiniciar o programa ele será reiniciado também.*
+*Importante: como o banco H2 permanece na memória, ao reiniciar o programa ele será reiniciado também.*
 
 ## OBSERVAÇÕES ⚠️
 
