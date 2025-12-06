@@ -77,7 +77,7 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto no terminal
 3. Execute o comando: `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
-4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot:1.1` no terminal.
+4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot` no terminal.
 
 **URLs principais:**
 
