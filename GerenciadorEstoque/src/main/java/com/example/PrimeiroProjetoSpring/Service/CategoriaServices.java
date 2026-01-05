@@ -38,16 +38,16 @@ public class CategoriaServices {
         return categoriaRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria com id "+id+" não encontrada."));
     }
+    
+    public boolean categoryAlreadyExists(String nome){
+        return categoriaRepository.existsByNome(nome);
+    }
        
     public ResponseEntity<CategoriaResponseDTO> findCategoryById(Long id){
         Categoria categoriaExistente = findCategory(id);    
         CategoriaResponseDTO dto = categoriaMapper.convertCategoriaToDto(categoriaExistente);
         return ResponseEntity.ok(dto);      
     }  
-
-    public boolean categoryAlreadyExists(String nome){
-        return categoriaRepository.existsByNome(nome);
-    }
     
     public List<CategoriaResponseDTO> listAllCategories(){
         List<Categoria> categorias = categoriaRepository.findAll();
