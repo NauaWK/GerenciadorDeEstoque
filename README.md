@@ -21,7 +21,7 @@ Banco de dados local H2 para testes;
 
 Persistência de dados com Spring Data JPA;
 
-Swagger UI para facilitar testes e visualização dos endpoints;
+Swagger UI para documentação da API;
 
 Gerenciador de dependências Maven;
 
