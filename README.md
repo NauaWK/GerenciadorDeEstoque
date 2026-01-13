@@ -41,13 +41,13 @@ Criação de imagem da aplicação com Docker;
 
  ## Arquitetura
 
-Arquitetura em camadas com os seguintes folders:
+Arquitetura baseada em camadas com as seguintes separações:
 
 → Model (aonde estarão as classes marcadas com @Entity)
 
 → Utils (possuirá folders/arquivos utilitários, como mappers, enums etc)
 
-→ DTO (possuirá sub-folders representando os RequestDTO e ResponseDTO para cada Model) 
+→ DTO (RequestDTO/ResponseDTO para cada Model) 
 
 → Mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
 
