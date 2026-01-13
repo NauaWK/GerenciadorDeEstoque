@@ -26,17 +26,6 @@ public class ProdutoServices {
         this.produtoMapper = produtoMapper;
     }
 
-    public void addProduct(Produto produto) {          
-        produtoRepository.save(produto);
-        
-        //adicionando o produto e atualizando a quantidade de produtos da categoria correspondente
-        Long categoriaId = produto.getCategoria().getId();
-        Categoria categoria = categoriaServices.findCategory(categoriaId);
-        categoria.setQuantidade(categoria.getQuantidade() + produto.getQuantidade());
-        categoriaServices.addCategory(categoria);
-  
-    }
-
     public Produto findProduct(Long id) {
         return produtoRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Produto com id "+id+" não encontrado."));
@@ -46,13 +35,21 @@ public class ProdutoServices {
         return produtoRepository.existsByNome(nome);
     }
 
-    public ResponseEntity<ProdutoResponseDTO> findProductById (Long id){
+    public ProdutoResponseDTO findProductById (Long id){
         Produto produtoExistente = findProduct(id);
-        ProdutoResponseDTO dto =  produtoMapper.convertProdutoToDTO(produtoExistente);
-        return ResponseEntity.ok(dto);
+        return produtoMapper.convertProdutoToDTO(produtoExistente);
     }
     
-
+    public void addProduct(Produto produto) {          
+        produtoRepository.save(produto);
+        
+        //adicionando o produto e atualizando a quantidade de produtos da categoria correspondente
+        Long categoriaId = produto.getCategoria().getId();
+        Categoria categoria = categoriaServices.findCategory(categoriaId);
+        categoria.setQuantidade(categoria.getQuantidade() + produto.getQuantidade());
+        categoriaServices.addCategory(categoria);  
+    }
+    
     public List<ProdutoResponseDTO> listAllProducts () {
         List<Produto> produtos = produtoRepository.findAll();
         
@@ -69,7 +66,7 @@ public class ProdutoServices {
         return responseDtos;
     }
 
-    public ResponseEntity<Void> deleteProduct (Long id){
+    public void deleteProduct (Long id){
         Produto produto = findProduct(id);    
         produtoRepository.deleteById(id);
        
@@ -78,7 +75,5 @@ public class ProdutoServices {
         Categoria categoria = categoriaServices.findCategory(categoriaId);
         categoria.setQuantidade(categoria.getQuantidade() - produto.getQuantidade());
         categoriaServices.addCategory(categoria);
-        
-        return ResponseEntity.noContent().build();
     }
 }

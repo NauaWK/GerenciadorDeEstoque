@@ -5,9 +5,11 @@ import com.example.GerenciadorEstoque.Model.Produto;
 import com.example.GerenciadorEstoque.Service.ProdutoServices;
 import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoRequestDTO;
 import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.Docs.ProdutoControllerDoc;
 import com.example.GerenciadorEstoque.Utils.Mappers.ProdutoMapper;
 import com.example.GerenciadorEstoque.Model.Categoria;
 import com.example.GerenciadorEstoque.Service.CategoriaServices;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -23,7 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/estoque")
-public class ProdutoController {
+@Tag(name = "Produtos", description = "Endpoints para gerenciamento de produtos")
+public class ProdutoController implements ProdutoControllerDoc{
     
     private final ProdutoServices produtoServices;
     private final CategoriaServices categoriaServices;
@@ -41,6 +44,7 @@ public class ProdutoController {
     }
     
     @PostMapping("/produtos")
+    @Override
     public ResponseEntity<ProdutoResponseDTO> addProduct(@Valid @RequestBody ProdutoRequestDTO produtoRequest){
 
         //verificando se a categoria selecionada no requestDTO existe através do ID
@@ -57,18 +61,24 @@ public class ProdutoController {
     }
        
     @GetMapping("/produtos")
-    public List<ProdutoResponseDTO> listAllProducts(){
-        return produtoServices.listAllProducts(); 
+    @Override
+    public ResponseEntity<List<ProdutoResponseDTO>> listAllProducts(){
+        List<ProdutoResponseDTO> produtos = produtoServices.listAllProducts();
+        return ResponseEntity.ok().body(produtos);
     }
     
     @GetMapping("/produtos/{id}")
+    @Override
     public ResponseEntity<ProdutoResponseDTO> findProductById(@PathVariable Long id){
-        return produtoServices.findProductById(id);
+        ProdutoResponseDTO produto = produtoServices.findProductById(id);
+        return ResponseEntity.ok().body(produto);
     }
     
     @DeleteMapping("/produtos/{id}")
+    @Override
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id){
-        return produtoServices.deleteProduct(id);
+        produtoServices.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
     

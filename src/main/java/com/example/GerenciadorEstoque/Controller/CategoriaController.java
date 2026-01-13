@@ -4,10 +4,12 @@ package com.example.GerenciadorEstoque.Controller;
 import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaResponseDTO;
 import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.Docs.CategoriaControllerDoc;
 import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectAlreadyExistsException;
 import com.example.GerenciadorEstoque.Utils.Mappers.CategoriaMapper;
 import com.example.GerenciadorEstoque.Model.Categoria;
 import com.example.GerenciadorEstoque.Service.CategoriaServices;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -23,7 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/estoque")
-public class CategoriaController {
+@Tag(name = "Categorias", description = "Endpoints para gerenciamento de categorias")
+public class CategoriaController implements CategoriaControllerDoc {
     
     private final CategoriaMapper categoriaMapper;
     private final CategoriaServices categoriaServices;
@@ -34,6 +37,7 @@ public class CategoriaController {
     }  
     
     @PostMapping("/categorias")
+    @Override
     public ResponseEntity<CategoriaResponseDTO> addCategory (@Valid @RequestBody CategoriaRequestDTO categoriaRequest){
 
         if(categoriaServices.categoryAlreadyExists(categoriaRequest.nome())){
@@ -46,28 +50,38 @@ public class CategoriaController {
     }    
     
     @GetMapping("/categorias")
-    public List<CategoriaResponseDTO> listAllCategories(){
-        return categoriaServices.listAllCategories();
+    @Override
+    public ResponseEntity<List<CategoriaResponseDTO>> listAllCategories(){
+        List<CategoriaResponseDTO> categorias =  categoriaServices.listAllCategories();
+        return ResponseEntity.ok().body(categorias);
     }
     
     @GetMapping("/categorias/{id}")
+    @Override
     public ResponseEntity<CategoriaResponseDTO> findCategoryById(@PathVariable Long id){
-        return categoriaServices.findCategoryById(id);
+        CategoriaResponseDTO categoria = categoriaServices.findCategoryById(id);
+        return ResponseEntity.ok().body(categoria);
     }   
     
     @GetMapping("/categorias/{id}/produtos")
-    public List<ProdutoResponseDTO> listProductsByCategory(@PathVariable Long id){
-        return categoriaServices.listProductsByCategory(id);
+    @Override
+    public ResponseEntity<List<ProdutoResponseDTO>> listProductsByCategory(@PathVariable Long id){
+        List<ProdutoResponseDTO> produtos = categoriaServices.listProductsByCategory(id);
+        return ResponseEntity.ok().body(produtos);
     } 
     
     @PutMapping("/categorias/{id}")
+    @Override
     public ResponseEntity<CategoriaResponseDTO> updateCategory(@PathVariable Long id, @Valid @RequestBody CategoriaRequestDTO categoriaRequest){
-        return categoriaServices.updateCategory(id, categoriaRequest);      
+        CategoriaResponseDTO categoria = categoriaServices.updateCategory(id, categoriaRequest);
+        return ResponseEntity.ok().body(categoria);      
     }  
     
     @DeleteMapping("/categorias/{id}")
+    @Override
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id){
-        return categoriaServices.deleteCategory(id);
+        categoriaServices.deleteCategory(id);
+        return ResponseEntity.noContent().build();
     }
     
 }
