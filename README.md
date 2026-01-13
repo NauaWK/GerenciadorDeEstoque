@@ -47,7 +47,7 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 → DTO (RequestDTO/ResponseDTO para cada Model) 
 
-→ Utils (possuirá folders/arquivos utilitários, como mappers, enums, etc)
+→ Utils (possuirá arquivos utilitários, como mappers, enums, etc)
 
 → Mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
 
