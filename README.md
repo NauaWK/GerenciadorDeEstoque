@@ -45,17 +45,17 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 → Model (aonde estarão as classes marcadas com @Entity)
 
-→ Utils (possuirá folders/arquivos utilitários, como mappers, enums etc)
-
 → DTO (RequestDTO/ResponseDTO para cada Model) 
+
+→ Utils (possuirá folders/arquivos utilitários, como mappers, enums, etc)
 
 → Mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
 
-→ Controller
+→ Controller (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
 
-→ Service
+→ Service (regras de negócio e chamadas de repositórios)
 
-→ Repository
+→ Repository (camada de persistência, acesso direto ao banco de dados)
 
 → Exception (tratamento centralizado de exceções)
 
