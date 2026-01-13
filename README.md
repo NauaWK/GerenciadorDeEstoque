@@ -59,6 +59,7 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 → Exception (tratamento centralizado de exceções)
 
+→ Docs (documentação da API através de interfaces implementadas nos respectivos Controllers)
 
 ## Endpoints REST
 
