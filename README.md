@@ -43,23 +43,23 @@ Criação de imagem da aplicação com Docker;
 
 Arquitetura baseada em camadas com as seguintes separações:
 
-→ Model (aonde estarão as classes marcadas com @Entity)
+→ entities (aonde estarão as classes marcadas com @Entity)
 
-→ DTO (RequestDTO/ResponseDTO para cada Model) 
+→ dto (RequestDTO/ResponseDTO para cada Model) 
 
-→ Utils (possuirá arquivos utilitários, como mappers, enums, etc)
+→ utils (possuirá arquivos utilitários, como mappers, enums, etc)
 
-→ Mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
+→ mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
 
-→ Controller (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
+→ controllers (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
 
-→ Service (regras de negócio e chamadas de repositórios)
+→ services (regras de negócio e chamadas de repositórios)
 
-→ Repository (camada de persistência, acesso direto ao banco de dados)
+→ repositories (camada de persistência, acesso direto ao banco de dados)
 
-→ Exception (tratamento centralizado de exceções)
+→ exception (tratamento centralizado de exceções)
 
-→ Docs (documentação da API através de interfaces implementadas nos respectivos Controllers)
+→ docs (documentação da API através de interfaces implementadas nos respectivos controllers)
 
 ## Endpoints REST
 
