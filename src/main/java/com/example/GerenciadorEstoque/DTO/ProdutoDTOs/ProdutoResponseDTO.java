@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.DTO.ProdutoDTOs;
+package com.example.GerenciadorEstoque.dto.ProdutoDTOs;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.DTO.CategoriaDTOs;
+package com.example.GerenciadorEstoque.dto.CategoriaDTOs;
 
 import jakarta.validation.constraints.NotBlank;
 

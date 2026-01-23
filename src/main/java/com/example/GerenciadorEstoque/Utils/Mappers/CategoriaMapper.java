@@ -1,21 +1,21 @@
 
-package com.example.GerenciadorEstoque.Utils.Mappers;
+package com.example.GerenciadorEstoque.utils.mappers;
 
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaRequestDTO;
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaResponseDTO;
-import com.example.GerenciadorEstoque.Model.Categoria;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
+import com.example.GerenciadorEstoque.entities.Categoria;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CategoriaMapper {
     
-    public Categoria convertDtoToCategoria(CategoriaRequestDTO categoriaRequestDTO){
+    public Categoria toCategoria(CategoriaRequestDTO categoriaRequestDTO){
         return new Categoria(
             categoriaRequestDTO.nome()
         );      
     }  
     
-    public CategoriaResponseDTO convertCategoriaToDto(Categoria categoria){
+    public CategoriaResponseDTO toDto(Categoria categoria){
         return new CategoriaResponseDTO(
             categoria.getId(),
             categoria.getNome(),

@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.DTO.ProdutoDTOs;
+package com.example.GerenciadorEstoque.dto.ProdutoDTOs;
 
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.NotBlank;
@@ -18,7 +18,7 @@ public record ProdutoRequestDTO(
     @DecimalMax(value = "10000.00", message = "O preço não pode ultrapassar R$10.000,00")
     BigDecimal preco,
     
-    @Range(min = 1, max = 100, message = "A quantidade de produtos deve estar entre 1 e 100")
+    @Range(min = 1, max = 300, message = "A quantidade de produtos deve estar entre 1 e 300")
     int quantidade,
     
     @NotNull

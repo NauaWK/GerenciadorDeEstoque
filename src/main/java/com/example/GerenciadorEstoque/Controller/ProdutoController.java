@@ -1,14 +1,9 @@
-package com.example.GerenciadorEstoque.Controller;
+package com.example.GerenciadorEstoque.controller;
 
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectAlreadyExistsException;
-import com.example.GerenciadorEstoque.Model.Produto;
-import com.example.GerenciadorEstoque.Service.ProdutoServices;
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoRequestDTO;
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.GerenciadorEstoque.Docs.ProdutoControllerDoc;
-import com.example.GerenciadorEstoque.Utils.Mappers.ProdutoMapper;
-import com.example.GerenciadorEstoque.Model.Categoria;
-import com.example.GerenciadorEstoque.Service.CategoriaServices;
+import com.example.GerenciadorEstoque.services.ProdutoServices;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.docs.ProdutoControllerDoc;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -25,39 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/estoque")
-@Tag(name = "Produtos", description = "Endpoints para gerenciamento de produtos")
+@Tag(name = "Produtos", description = "Endpoint para gerenciamento de produtos")
 public class ProdutoController implements ProdutoControllerDoc{
     
     private final ProdutoServices produtoServices;
-    private final CategoriaServices categoriaServices;
-    private final ProdutoMapper produtoMapper;
     
-    public ProdutoController(
-            ProdutoServices produtoServices, 
-            ProdutoMapper produtoMapper,
-            CategoriaServices categoriaServices
-            ){
-        
+    public ProdutoController(ProdutoServices produtoServices){
         this.produtoServices = produtoServices;
-        this.produtoMapper = produtoMapper;
-        this.categoriaServices = categoriaServices;
     }
     
     @PostMapping("/produtos")
     @Override
-    public ResponseEntity<ProdutoResponseDTO> addProduct(@Valid @RequestBody ProdutoRequestDTO produtoRequest){
-
-        //verificando se a categoria selecionada no requestDTO existe através do ID
-        Categoria categoriaExistente = categoriaServices.findCategory(produtoRequest.categoriaId());
-
-        if(produtoServices.productAlreadyExists(produtoRequest.nome())){
-            throw new ObjectAlreadyExistsException("O produto com nome "+ produtoRequest.nome()+" já existe.");
-        }
-
-        Produto produtoSalvo = produtoMapper.convertDtoToProduto(produtoRequest, categoriaExistente);
-        produtoServices.addProduct(produtoSalvo);
-        ProdutoResponseDTO dto = produtoMapper.convertProdutoToDTO(produtoSalvo);
-        return ResponseEntity.created(URI.create("/estoque/produtos/" + produtoSalvo.getId())).body(dto);      
+    public ResponseEntity<ProdutoResponseDTO> addProduct(@Valid @RequestBody ProdutoRequestDTO produto){
+        ProdutoResponseDTO dto = produtoServices.addProduct(produto);
+        return ResponseEntity.created(URI.create("/estoque/produtos/" + dto.id())).body(dto);      
     }
        
     @GetMapping("/produtos")

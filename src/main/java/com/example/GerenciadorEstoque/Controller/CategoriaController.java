@@ -1,14 +1,11 @@
 
-package com.example.GerenciadorEstoque.Controller;
+package com.example.GerenciadorEstoque.controller;
 
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaRequestDTO;
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaResponseDTO;
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.GerenciadorEstoque.Docs.CategoriaControllerDoc;
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectAlreadyExistsException;
-import com.example.GerenciadorEstoque.Utils.Mappers.CategoriaMapper;
-import com.example.GerenciadorEstoque.Model.Categoria;
-import com.example.GerenciadorEstoque.Service.CategoriaServices;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.docs.CategoriaControllerDoc;
+import com.example.GerenciadorEstoque.services.CategoriaServices;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -25,28 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/estoque")
-@Tag(name = "Categorias", description = "Endpoints para gerenciamento de categorias")
+@Tag(name = "Categorias", description = "Endpoint para gerenciamento de categorias")
 public class CategoriaController implements CategoriaControllerDoc {
     
-    private final CategoriaMapper categoriaMapper;
     private final CategoriaServices categoriaServices;
     
-    public CategoriaController(CategoriaServices categoriaServices, CategoriaMapper categoriaMapper){
-        this.categoriaMapper = categoriaMapper;
+    public CategoriaController(CategoriaServices categoriaServices){
         this.categoriaServices = categoriaServices;    
     }  
     
     @PostMapping("/categorias")
     @Override
-    public ResponseEntity<CategoriaResponseDTO> addCategory (@Valid @RequestBody CategoriaRequestDTO categoriaRequest){
-
-        if(categoriaServices.categoryAlreadyExists(categoriaRequest.nome())){
-            throw new ObjectAlreadyExistsException("A categoria com nome "+categoriaRequest.nome()+" já existe.");
-        }
-
-        Categoria categoriaSalva = categoriaMapper.convertDtoToCategoria(categoriaRequest);
-        categoriaServices.addCategory(categoriaSalva);           
-        return ResponseEntity.created(URI.create("/estoque/categorias/" + categoriaSalva.getId())).body(categoriaMapper.convertCategoriaToDto(categoriaSalva));          
+    public ResponseEntity<CategoriaResponseDTO> addCategory (@Valid @RequestBody CategoriaRequestDTO request){
+        CategoriaResponseDTO dto = categoriaServices.addNewCategory(request);           
+        return ResponseEntity.created(URI.create("/estoque/categorias/" + dto.id())).body(dto);          
     }    
     
     @GetMapping("/categorias")

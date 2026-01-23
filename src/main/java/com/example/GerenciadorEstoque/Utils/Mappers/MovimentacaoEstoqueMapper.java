@@ -1,27 +1,27 @@
 
-package com.example.GerenciadorEstoque.Utils.Mappers;
+package com.example.GerenciadorEstoque.utils.mappers;
 
-import com.example.GerenciadorEstoque.DTO.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
-import com.example.GerenciadorEstoque.DTO.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
-import com.example.GerenciadorEstoque.Model.MovimentacaoEstoque;
-import com.example.GerenciadorEstoque.Model.Produto;
+import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
+import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
+import com.example.GerenciadorEstoque.entities.MovimentacaoEstoque;
+import com.example.GerenciadorEstoque.entities.Produto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MovimentacaoEstoqueMapper {
     
-    public MovimentacaoEstoque convertDtoToMovimentacao(Produto produto, MovimentacaoRequestDTO movimentacaoRequest){
+    public MovimentacaoEstoque toMovimentacao(Produto produto, MovimentacaoRequestDTO movimentacaoRequest){
         return new MovimentacaoEstoque(
             produto,
             movimentacaoRequest.tipo(), 
             movimentacaoRequest.valorAlterado(),
             movimentacaoRequest.quantidadeAlterada(),
             movimentacaoRequest.nomeAlterado(),
-            movimentacaoRequest.obervacao()
+            movimentacaoRequest.observacao()
         );      
     }  
     
-    public MovimentacaoResponseDTO convertMovimentacaoToDto (MovimentacaoEstoque MovimentacaoEstoque){
+    public MovimentacaoResponseDTO toDto (MovimentacaoEstoque MovimentacaoEstoque){
         return new MovimentacaoResponseDTO(
             MovimentacaoEstoque.getId(),
             MovimentacaoEstoque.getProdutoId(),

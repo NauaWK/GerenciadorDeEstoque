@@ -1,11 +1,12 @@
 
-package com.example.GerenciadorEstoque.Exception;
+package com.example.GerenciadorEstoque.exception;
 
-import com.example.GerenciadorEstoque.Exception.customExceptions.CategoryWithProductsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.CategoryWithProductsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.InvalidEnumException;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectNotFoundException;
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectAlreadyExistsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectNotFoundException;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectAlreadyExistsException;
 import java.time.LocalDateTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,17 +36,22 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ObjectNotFoundException.class)
-    public ResponseEntity<ErrorResponse> objectNotFoundException (ObjectNotFoundException ex){
+    public ResponseEntity<ErrorResponse> objectNotFoundExceptionHandler (ObjectNotFoundException ex){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("404", ex.getMessage()));
     }
 
     @ExceptionHandler(ObjectAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> objectAlreadyExistsException (ObjectAlreadyExistsException ex) {
+    public ResponseEntity<ErrorResponse> objectAlreadyExistsExceptionHandler (ObjectAlreadyExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponse("409", ex.getMessage()));
     }
     
     @ExceptionHandler(CategoryWithProductsException.class)
-    public ResponseEntity<ErrorResponse> categoryWithProductsException (CategoryWithProductsException ex){      
+    public ResponseEntity<ErrorResponse> categoryWithProductsExceptionHandler (CategoryWithProductsException ex){      
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("400", ex.getMessage()));
+    } 
+    
+    @ExceptionHandler(InvalidEnumException.class)
+    public ResponseEntity<ErrorResponse> InvalidEnumExceptionHandler (InvalidEnumException ex){      
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("400", ex.getMessage()));
     } 
 }

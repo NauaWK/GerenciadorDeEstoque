@@ -1,13 +1,10 @@
 
-package com.example.GerenciadorEstoque.Controller;
+package com.example.GerenciadorEstoque.controller;
 
-import com.example.GerenciadorEstoque.DTO.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
-import com.example.GerenciadorEstoque.DTO.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
-import com.example.GerenciadorEstoque.Model.MovimentacaoEstoque;
-import com.example.GerenciadorEstoque.Model.Produto;
-import com.example.GerenciadorEstoque.Service.MovimentacaoEstoqueServices;
-import com.example.GerenciadorEstoque.Service.ProdutoServices;
-import com.example.GerenciadorEstoque.Utils.Mappers.MovimentacaoEstoqueMapper;
+import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
+import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
+import com.example.GerenciadorEstoque.services.MovimentacaoEstoqueServices;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
 import org.springframework.http.ResponseEntity;
@@ -19,28 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/estoque")
+@Tag(name = "MovimentacaoEstoque", description = "Endpoint para modificações de qualquer produto do estoque")
 public class MovimentacaoEstoqueController {
     
     private final MovimentacaoEstoqueServices movimentacaoServices;
-    private final MovimentacaoEstoqueMapper movimentacaoMapper;
-    private final ProdutoServices produtoServices;
 
-    public MovimentacaoEstoqueController(MovimentacaoEstoqueServices movimentacaoServices, MovimentacaoEstoqueMapper movimentacaoMapper, ProdutoServices produtoServices) {
+    public MovimentacaoEstoqueController(MovimentacaoEstoqueServices movimentacaoServices) {
         this.movimentacaoServices = movimentacaoServices;
-        this.movimentacaoMapper = movimentacaoMapper;
-        this.produtoServices = produtoServices;
     }
     
     @PostMapping("/movimentacoes")
-    public ResponseEntity<MovimentacaoResponseDTO> registerStockMovement (@Valid @RequestBody MovimentacaoRequestDTO movimentacaoRequest){
-        
-       Produto produtoExistente =  produtoServices.findProduct(movimentacaoRequest.produtoId());     
-       MovimentacaoEstoque movimentacaoRegistrada = movimentacaoMapper.convertDtoToMovimentacao(produtoExistente, movimentacaoRequest);   
-       movimentacaoServices.registerStockMovement(movimentacaoRegistrada);
-       
-       MovimentacaoResponseDTO dto = movimentacaoMapper.convertMovimentacaoToDto(movimentacaoRegistrada);
-       return ResponseEntity.created(URI.create("/estoque/movimentacoes/" + movimentacaoRegistrada.getId())).body(dto);
-               
+    public ResponseEntity<MovimentacaoResponseDTO> registerStockMovement (@Valid @RequestBody MovimentacaoRequestDTO movimentacaoRequest){             
+       MovimentacaoResponseDTO dto = movimentacaoServices.registerStockMovement(movimentacaoRequest);
+       return ResponseEntity.created(URI.create("/estoque/movimentacoes/" + dto.id())).body(dto);
+              
     }
      
 }

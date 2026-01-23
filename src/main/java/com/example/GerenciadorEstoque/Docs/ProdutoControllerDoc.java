@@ -1,8 +1,8 @@
 
-package com.example.GerenciadorEstoque.Docs;
+package com.example.GerenciadorEstoque.docs;
 
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoRequestDTO;
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

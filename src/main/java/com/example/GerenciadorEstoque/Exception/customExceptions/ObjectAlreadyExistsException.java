@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.Exception.customExceptions;
+package com.example.GerenciadorEstoque.exception.customExceptions;
 
 public class ObjectAlreadyExistsException extends RuntimeException {
     public ObjectAlreadyExistsException(String message) {

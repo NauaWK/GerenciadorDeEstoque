@@ -1,7 +1,7 @@
 
-package com.example.GerenciadorEstoque.DTO.MovimentacaoEstoqueDTOs;
+package com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs;
 
-import com.example.GerenciadorEstoque.Utils.Enum.TipoMovimentacao;
+import com.example.GerenciadorEstoque.utils.enums.TipoMovimentacao;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

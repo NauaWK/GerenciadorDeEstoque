@@ -1,16 +1,17 @@
 
-package com.example.GerenciadorEstoque.Service;
+package com.example.GerenciadorEstoque.services;
 
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaRequestDTO;
-import com.example.GerenciadorEstoque.DTO.CategoriaDTOs.CategoriaResponseDTO;
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.GerenciadorEstoque.Exception.customExceptions.CategoryWithProductsException;
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectNotFoundException;
-import com.example.GerenciadorEstoque.Utils.Mappers.CategoriaMapper;
-import com.example.GerenciadorEstoque.Model.Categoria;
-import com.example.GerenciadorEstoque.Model.Produto;
-import com.example.GerenciadorEstoque.Repository.CategoriaRepository;
-import com.example.GerenciadorEstoque.Repository.ProdutoRepository;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
+import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.exception.customExceptions.CategoryWithProductsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectAlreadyExistsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectNotFoundException;
+import com.example.GerenciadorEstoque.utils.mappers.CategoriaMapper;
+import com.example.GerenciadorEstoque.entities.Categoria;
+import com.example.GerenciadorEstoque.entities.Produto;
+import com.example.GerenciadorEstoque.repositories.CategoriaRepository;
+import com.example.GerenciadorEstoque.repositories.ProdutoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -27,11 +28,7 @@ public class CategoriaServices {
         this.categoriaMapper = categoriaMapper;
         this.produtoRepository = produtoRepository;
     }
-    
-    public void addCategory(Categoria categoria){
-        categoriaRepository.save(categoria);
-    }
-    
+       
     public Categoria findCategory(Long id){
         return categoriaRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria com id "+id+" não encontrada."));
@@ -40,10 +37,24 @@ public class CategoriaServices {
     public boolean categoryAlreadyExists(String nome){
         return categoriaRepository.existsByNome(nome);
     }
-       
+      
+    
+    public void saveCategory(Categoria categoria){
+        categoriaRepository.save(categoria);
+    }
+    
+    public CategoriaResponseDTO addNewCategory(CategoriaRequestDTO request){
+        if(categoryAlreadyExists(request.nome())){
+            throw new ObjectAlreadyExistsException("A categoria com nome "+request.nome()+" já existe.");
+        }
+        Categoria categoria = categoriaMapper.toCategoria(request);
+        categoriaRepository.save(categoria);
+        return categoriaMapper.toDto(categoria);
+    }
+    
     public CategoriaResponseDTO findCategoryById(Long id){
         Categoria categoriaExistente = findCategory(id);    
-        return categoriaMapper.convertCategoriaToDto(categoriaExistente);      
+        return categoriaMapper.toDto(categoriaExistente);      
     }  
     
     public List<CategoriaResponseDTO> listAllCategories(){
@@ -63,7 +74,7 @@ public class CategoriaServices {
         findCategory(id);
         
         //acessando os produtos de uma categoria pelo ID através de um método personalizado em ProdutoRepository
-        List<Produto> produtos = produtoRepository.findByCategoriaId(id);     
+        List<Produto> produtos = produtoRepository.findByCategoriaId(id);    
         
         //convertendo cada Produto em ProdutoResponseDTO
         List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
@@ -79,12 +90,12 @@ public class CategoriaServices {
     }
     
     public CategoriaResponseDTO updateCategory (Long id, CategoriaRequestDTO categoriaRequest){
-        Categoria categoriaExistente = findCategory(id);
+        Categoria categoria = findCategory(id);
         
         //se estiver presente, altera os dados
-        categoriaExistente.setNome(categoriaRequest.nome());     
-        addCategory(categoriaExistente);
-        return categoriaMapper.convertCategoriaToDto(categoriaExistente);       
+        categoria.setNome(categoriaRequest.nome());     
+        categoriaRepository.save(categoria);
+        return categoriaMapper.toDto(categoria);       
     }
     
     public void deleteCategory(Long id){

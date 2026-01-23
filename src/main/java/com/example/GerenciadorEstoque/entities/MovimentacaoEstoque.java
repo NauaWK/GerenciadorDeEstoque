@@ -1,7 +1,7 @@
 
-package com.example.GerenciadorEstoque.Model;
+package com.example.GerenciadorEstoque.entities;
 
-import com.example.GerenciadorEstoque.Utils.Enum.TipoMovimentacao;
+import com.example.GerenciadorEstoque.utils.enums.TipoMovimentacao;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -35,10 +36,14 @@ public class MovimentacaoEstoque {
     @Column(columnDefinition = "TEXT")
     private String observacao;
 
-    //campos adicionais
-    private BigDecimal valorAlterado; //se tipo for VALOR
-    private Integer quantidadeAlterada; //se tipo for QUANTIDADE
-    private String nomeAlterado; //se tipo for NOME
+    private BigDecimal valorAlterado;
+    private Integer quantidadeAlterada; 
+    private String nomeAlterado; 
+    
+    @PrePersist
+    public void aoCriar() {
+        dataMovimentacao = LocalDateTime.now().withNano(0);
+    }
 
     public MovimentacaoEstoque() {}
 

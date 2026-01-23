@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.Exception;
+package com.example.GerenciadorEstoque.exception;
 
 import java.time.LocalDateTime;
 

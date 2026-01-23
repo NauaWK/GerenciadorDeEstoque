@@ -1,15 +1,16 @@
 
-package com.example.GerenciadorEstoque.Service;
+package com.example.GerenciadorEstoque.services;
 
-import com.example.GerenciadorEstoque.DTO.ProdutoDTOs.ProdutoResponseDTO;
-import com.example.GerenciadorEstoque.Exception.customExceptions.ObjectNotFoundException;
-import com.example.GerenciadorEstoque.Model.Categoria;
-import com.example.GerenciadorEstoque.Utils.Mappers.ProdutoMapper;
-import com.example.GerenciadorEstoque.Model.Produto;
-import com.example.GerenciadorEstoque.Repository.ProdutoRepository;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoRequestDTO;
+import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectAlreadyExistsException;
+import com.example.GerenciadorEstoque.exception.customExceptions.ObjectNotFoundException;
+import com.example.GerenciadorEstoque.entities.Categoria;
+import com.example.GerenciadorEstoque.utils.mappers.ProdutoMapper;
+import com.example.GerenciadorEstoque.entities.Produto;
+import com.example.GerenciadorEstoque.repositories.ProdutoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -37,17 +38,31 @@ public class ProdutoServices {
 
     public ProdutoResponseDTO findProductById (Long id){
         Produto produtoExistente = findProduct(id);
-        return produtoMapper.convertProdutoToDTO(produtoExistente);
+        return produtoMapper.toDto(produtoExistente);
     }
     
-    public void addProduct(Produto produto) {          
-        produtoRepository.save(produto);
+    public void saveProduct(Produto product){
+        produtoRepository.save(product);
+    }
+    
+    public ProdutoResponseDTO addProduct(ProdutoRequestDTO request) {  
+        
+        //verificando se a categoria selecionada no requestDTO existe através do ID
+        Categoria categoriaExistente = categoriaServices.findCategory(request.categoriaId());
+        
+        //tratamento de nome duplicado
+        if(productAlreadyExists(request.nome())){
+            throw new ObjectAlreadyExistsException("O produto com nome "+ request.nome()+" já existe.");
+        }
         
         //adicionando o produto e atualizando a quantidade de produtos da categoria correspondente
-        Long categoriaId = produto.getCategoria().getId();
-        Categoria categoria = categoriaServices.findCategory(categoriaId);
-        categoria.setQuantidade(categoria.getQuantidade() + produto.getQuantidade());
-        categoriaServices.addCategory(categoria);  
+        categoriaExistente.setQuantidade(categoriaExistente.getQuantidade() + request.quantidade());
+        categoriaServices.saveCategory(categoriaExistente);  
+        
+        Produto produtoSalvo = produtoMapper.toProduto(request, categoriaExistente);    
+        produtoRepository.save(produtoSalvo);
+        return produtoMapper.toDto(produtoSalvo);
+        
     }
     
     public List<ProdutoResponseDTO> listAllProducts () {
@@ -74,6 +89,6 @@ public class ProdutoServices {
         Long categoriaId = produto.getCategoria().getId();
         Categoria categoria = categoriaServices.findCategory(categoriaId);
         categoria.setQuantidade(categoria.getQuantidade() - produto.getQuantidade());
-        categoriaServices.addCategory(categoria);
+        categoriaServices.saveCategory(categoria);
     }
 }
