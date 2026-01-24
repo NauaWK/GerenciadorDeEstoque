@@ -39,15 +39,15 @@ public class ProdutoController implements ProdutoControllerDoc{
     @GetMapping("/produtos")
     @Override
     public ResponseEntity<List<ProdutoResponseDTO>> listAllProducts(){
-        List<ProdutoResponseDTO> produtos = produtoServices.listAllProducts();
-        return ResponseEntity.ok().body(produtos);
+        List<ProdutoResponseDTO> dtos = produtoServices.listAllProducts();
+        return ResponseEntity.ok().body(dtos);
     }
     
     @GetMapping("/produtos/{id}")
     @Override
     public ResponseEntity<ProdutoResponseDTO> findProductById(@PathVariable Long id){
-        ProdutoResponseDTO produto = produtoServices.findProductById(id);
-        return ResponseEntity.ok().body(produto);
+        ProdutoResponseDTO dto = produtoServices.findProductById(id);
+        return ResponseEntity.ok().body(dto);
     }
     
     @DeleteMapping("/produtos/{id}")

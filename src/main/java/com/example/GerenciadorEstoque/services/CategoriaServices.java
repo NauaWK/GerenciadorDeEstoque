@@ -12,8 +12,8 @@ import com.example.GerenciadorEstoque.entities.Categoria;
 import com.example.GerenciadorEstoque.entities.Produto;
 import com.example.GerenciadorEstoque.repositories.CategoriaRepository;
 import com.example.GerenciadorEstoque.repositories.ProdutoRepository;
+import com.example.GerenciadorEstoque.utils.mappers.ProdutoMapper;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,11 +22,17 @@ public class CategoriaServices {
     private final CategoriaRepository categoriaRepository;
     private final CategoriaMapper categoriaMapper;
     private final ProdutoRepository produtoRepository;
+    private final ProdutoMapper produtoMapper;
     
-    public CategoriaServices(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper, ProdutoRepository produtoRepository){
+    public CategoriaServices(
+            CategoriaRepository categoriaRepository, 
+            CategoriaMapper categoriaMapper, 
+            ProdutoRepository produtoRepository,
+            ProdutoMapper produtoMapper){
         this.categoriaRepository = categoriaRepository;        
         this.categoriaMapper = categoriaMapper;
         this.produtoRepository = produtoRepository;
+        this.produtoMapper = produtoMapper;
     }
        
     public Categoria findCategory(Long id){
@@ -34,7 +40,7 @@ public class CategoriaServices {
                 .orElseThrow(() -> new ObjectNotFoundException("Categoria com id "+id+" não encontrada."));
     }
     
-    public boolean categoryAlreadyExists(String nome){
+    private boolean categoryAlreadyExists(String nome){
         return categoriaRepository.existsByNome(nome);
     }
       
@@ -61,10 +67,9 @@ public class CategoriaServices {
         List<Categoria> categorias = categoriaRepository.findAll();
         
         //convertendo cada Categoria em CategoriaResponseDTO
-        List<CategoriaResponseDTO> responseDtos = categorias.stream().map(categoria -> new CategoriaResponseDTO(
-            categoria.getId(),
-            categoria.getNome(),
-            categoria.getQuantidade())).collect(Collectors.toList());
+        List<CategoriaResponseDTO> responseDtos = categorias.stream()
+                .map(categoriaMapper::toDto)
+                .toList();
         
         return responseDtos;
     }      
@@ -77,14 +82,9 @@ public class CategoriaServices {
         List<Produto> produtos = produtoRepository.findByCategoriaId(id);    
         
         //convertendo cada Produto em ProdutoResponseDTO
-        List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
-            produto.getId(),
-            produto.getNome(), 
-            produto.getPreco(), 
-            produto.getQuantidade(),
-            produto.getDataAdicao(),
-            produto.getDataModificacao(),
-            produto.getCategoria().getId())).collect(Collectors.toList());
+        List<ProdutoResponseDTO> responseDtos = produtos.stream()
+                .map(produtoMapper::toDto)
+                .toList();
         
         return responseDtos;
     }

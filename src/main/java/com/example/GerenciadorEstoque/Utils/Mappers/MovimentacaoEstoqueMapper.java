@@ -24,7 +24,7 @@ public class MovimentacaoEstoqueMapper {
     public MovimentacaoResponseDTO toDto (MovimentacaoEstoque MovimentacaoEstoque){
         return new MovimentacaoResponseDTO(
             MovimentacaoEstoque.getId(),
-            MovimentacaoEstoque.getProdutoId(),
+            MovimentacaoEstoque.getProduto().getId(),
             MovimentacaoEstoque.getDataMovimentacao(),
             MovimentacaoEstoque.getTipo(), 
             MovimentacaoEstoque.getValorAlterado(),

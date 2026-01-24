@@ -10,7 +10,6 @@ import com.example.GerenciadorEstoque.utils.mappers.ProdutoMapper;
 import com.example.GerenciadorEstoque.entities.Produto;
 import com.example.GerenciadorEstoque.repositories.ProdutoRepository;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 
@@ -29,10 +28,10 @@ public class ProdutoServices {
 
     public Produto findProduct(Long id) {
         return produtoRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Produto com id "+id+" não encontrado."));
+                .orElseThrow(() -> new ObjectNotFoundException("Produto com id "+ id +" não encontrado."));
     }
     
-     public boolean productAlreadyExists(String nome) {
+    private boolean productAlreadyExists(String nome) {
         return produtoRepository.existsByNome(nome);
     }
 
@@ -69,14 +68,9 @@ public class ProdutoServices {
         List<Produto> produtos = produtoRepository.findAll();
         
         //convertendo cada Produto em ProdutoResponseDTO
-        List<ProdutoResponseDTO> responseDtos = produtos.stream().map(produto -> new ProdutoResponseDTO(
-                produto.getId(),
-                produto.getNome(),
-                produto.getPreco(),
-                produto.getQuantidade(),
-                produto.getDataAdicao(),
-                produto.getDataModificacao(),
-                produto.getCategoria().getId())).collect(Collectors.toList());
+        List<ProdutoResponseDTO> responseDtos = produtos.stream()
+                .map(produtoMapper::toDto)
+                .toList();
 
         return responseDtos;
     }

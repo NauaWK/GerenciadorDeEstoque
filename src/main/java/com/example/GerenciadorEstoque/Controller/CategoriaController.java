@@ -41,29 +41,29 @@ public class CategoriaController implements CategoriaControllerDoc {
     @GetMapping("/categorias")
     @Override
     public ResponseEntity<List<CategoriaResponseDTO>> listAllCategories(){
-        List<CategoriaResponseDTO> categorias =  categoriaServices.listAllCategories();
-        return ResponseEntity.ok().body(categorias);
+        List<CategoriaResponseDTO> dtos =  categoriaServices.listAllCategories();
+        return ResponseEntity.ok().body(dtos);
     }
     
     @GetMapping("/categorias/{id}")
     @Override
     public ResponseEntity<CategoriaResponseDTO> findCategoryById(@PathVariable Long id){
-        CategoriaResponseDTO categoria = categoriaServices.findCategoryById(id);
-        return ResponseEntity.ok().body(categoria);
+        CategoriaResponseDTO dto = categoriaServices.findCategoryById(id);
+        return ResponseEntity.ok().body(dto);
     }   
     
     @GetMapping("/categorias/{id}/produtos")
     @Override
     public ResponseEntity<List<ProdutoResponseDTO>> listProductsByCategory(@PathVariable Long id){
-        List<ProdutoResponseDTO> produtos = categoriaServices.listProductsByCategory(id);
-        return ResponseEntity.ok().body(produtos);
+        List<ProdutoResponseDTO> dtos = categoriaServices.listProductsByCategory(id);
+        return ResponseEntity.ok().body(dtos);
     } 
     
     @PutMapping("/categorias/{id}")
     @Override
     public ResponseEntity<CategoriaResponseDTO> updateCategory(@PathVariable Long id, @Valid @RequestBody CategoriaRequestDTO categoriaRequest){
-        CategoriaResponseDTO categoria = categoriaServices.updateCategory(id, categoriaRequest);
-        return ResponseEntity.ok().body(categoria);      
+        CategoriaResponseDTO dto = categoriaServices.updateCategory(id, categoriaRequest);
+        return ResponseEntity.ok().body(dto);      
     }  
     
     @DeleteMapping("/categorias/{id}")

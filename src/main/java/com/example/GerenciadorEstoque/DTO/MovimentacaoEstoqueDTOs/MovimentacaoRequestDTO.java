@@ -26,20 +26,22 @@ public record MovimentacaoRequestDTO(
 
     String nomeAlterado,
 
-    String observacao){
+    String observacao
+        
+        ){
         
         @AssertTrue(message = "nomeAlterado deve ser informado quando tipoMovimentacao = NOME") 
-        public boolean isNomeValido() {
+        private boolean isNomeValido() {
             return tipo != TipoMovimentacao.NOME || nomeAlterado != null;
         }
         
         @AssertTrue(message = "valorAlterado deve ser informado quando tipoMovimentacao = VALOR") 
-        public boolean isValorValido() {
+        private boolean isValorValido() {
             return tipo != TipoMovimentacao.VALOR || valorAlterado != null;
         }
         
         @AssertTrue(message = "quantidadeAlterada deve ser maior ou igual a 1 quando tipoMovimentacao = QUANTIDADE") 
-        public boolean isQtdValida() {
+        private boolean isQtdValida() {
             return tipo != TipoMovimentacao.QUANTIDADE || quantidadeAlterada >= 1;
         }
         

@@ -55,12 +55,21 @@ public class MovimentacaoEstoque {
         this.quantidadeAlterada = quantidadeAlterada;
         this.nomeAlterado = nomeAlterado;
     } 
-    
+
     public Long getId() {
         return id;
     }
-    public Long getProdutoId(){
-        return produto.getId();
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public LocalDateTime getDataMovimentacao() {
@@ -75,6 +84,10 @@ public class MovimentacaoEstoque {
         return tipo;
     }
 
+    public void setTipo(TipoMovimentacao tipo) {
+        this.tipo = tipo;
+    }
+
     public String getObservacao() {
         return observacao;
     }
@@ -87,12 +100,24 @@ public class MovimentacaoEstoque {
         return valorAlterado;
     }
 
+    public void setValorAlterado(BigDecimal valorAlterado) {
+        this.valorAlterado = valorAlterado;
+    }
+
     public Integer getQuantidadeAlterada() {
         return quantidadeAlterada;
     }
 
+    public void setQuantidadeAlterada(Integer quantidadeAlterada) {
+        this.quantidadeAlterada = quantidadeAlterada;
+    }
+
     public String getNomeAlterado() {
         return nomeAlterado;
+    }
+
+    public void setNomeAlterado(String nomeAlterado) {
+        this.nomeAlterado = nomeAlterado;
     }
     
 }
