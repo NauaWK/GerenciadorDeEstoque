@@ -36,7 +36,7 @@ Criação de imagem da aplicação com Docker;
 
 → Categoria
 
-→ MovimentacaoEstoque (em desenvolvimento)
+→ MovimentacaoEstoque (para modificações no estoque e controlar o histórico)
 
 
  ## Arquitetura
