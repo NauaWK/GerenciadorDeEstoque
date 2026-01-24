@@ -45,11 +45,11 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 → entities (classes representando as entidades do banco de dados)
 
-→ dto (RequestDTO/ResponseDTO para cada Model) 
+→ dto (RequestDTO/ResponseDTO para cada entidade) 
 
 → utils (possuirá arquivos utilitários, como mappers, enums, etc)
 
-→ mappers (conterá os mappers que converterão DTOs → Model e vice-versa)
+→ mappers (conterá os mappers que converterão DTOs → entidade e vice-versa)
 
 → controllers (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
 
