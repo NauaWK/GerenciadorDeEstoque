@@ -43,7 +43,7 @@ Criação de imagem da aplicação com Docker;
 
 Arquitetura baseada em camadas com as seguintes separações:
 
-→ entities (aonde estarão as classes marcadas com @Entity)
+→ entities (classes representando as entidades do banco de dados)
 
 → dto (RequestDTO/ResponseDTO para cada Model) 
 
