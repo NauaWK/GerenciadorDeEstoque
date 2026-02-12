@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>PrimeiroProjetoSpring</artifactId>
+	<artifactId>GerenciadorEstoque</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GerenciadorEstoque</name>
 	<description>Testando pela primeira vez o Spring Boot</description>
@@ -29,7 +29,7 @@
 
 	<properties>
 		<java.version>21</java.version>
-                <start-class>com.example.PrimeiroProjetoSpring.PrimeiroProjetoSpringApplication</start-class>
+                <start-class>com.example.GerenciadorEstoque.GerenciadorEstoqueApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -67,8 +67,8 @@
                 </dependency>                
 
                 <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
+                    <groupId>com.mysql</groupId>
+                    <artifactId>mysql-connector-j</artifactId>
                     <scope>runtime</scope>
                 </dependency>
                
