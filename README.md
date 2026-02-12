@@ -13,21 +13,21 @@ O projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo 
 
  ## Ferramentas Utilizadas
 
-Linguagem Java 21;
+- Linguagem Java 21
 
-Framework Spring Boot 3.5.4;
+- Framework Spring Boot 3.5.4
 
-Banco de dados local H2 para testes;
+- Gerenciador de dependências Maven
 
-Persistência de dados com Spring Data JPA;
+- Persistência de dados com Spring Data JPA
 
-Swagger UI para documentação da API;
+- Banco de dados MySQL (via Docker Compose)
 
-Gerenciador de dependências Maven;
+- Swagger UI para documentação da API
 
-Versionamento de código com Git;
+- Versionamento de código com Git
 
-Criação de imagem da aplicação com Docker;
+- Docker para criação de Dockerfile e Docker Compose
 
 
 ## Entidades
@@ -69,16 +69,13 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 
 **Requisitos:**
 
--Java 21+
-
--Maven
+- Docker
 
 **Passos:**
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto no terminal
-3. Execute o comando `mvn spring-boot:run` (caso esteja utilizando uma IDE, basta importar o projeto como Maven e executar a classe principal com a anotação @SpringBootApplication)
-4. Caso queira rodar a aplicação via Docker, execute o comando `docker run -p 8080:8080 nauanwk/gerenciador-estoque-springboot` no terminal.
+3. Execute o comando `docker-compose up`
 
 **Extra:**
 
