@@ -23,7 +23,7 @@ O projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo 
 
 - Banco de dados MySQL (via Docker Compose) para simular perfil de produção
 
-- Banco de dados H2 em memória para simular perfil de dev
+- Banco de dados H2 em memória para simular perfil de desenvolvimento
 
 - Swagger UI para documentação da API
 
