@@ -21,13 +21,15 @@ O projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo 
 
 - Persistência de dados com Spring Data JPA
 
-- Banco de dados MySQL (via Docker Compose)
+- Banco de dados MySQL (via Docker Compose) para simular perfil de produção
+
+- Banco de dados H2 em memória para simular perfil de dev
 
 - Swagger UI para documentação da API
 
 - Versionamento de código com Git
 
-- Docker para criação de Dockerfile e Docker Compose
+- Docker para imagem/containerização
 
 
 ## Entidades
@@ -63,19 +65,21 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 ## Endpoints REST
 
-Para a maioria das entidades do projeto estão previstas 2 a 4 operações distintas de CRUD.
+Para todas as entidades do projeto estão previstas 2 a 4 operações distintas de CRUD
 
 ## Como rodar a aplicação
 
 **Requisitos:**
 
-- Docker
+- Java e Maven
+- Docker (opcional)
 
 **Passos:**
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta do projeto no terminal
-3. Execute o comando `docker-compose up`
+3. Se não quiser/puder utilizar Docker, rode o comando `mvn spring-boot:run` ou execute via IDE (ativará perfil padrão *dev* com banco H2)
+4. Caso queira executar via Docker, rode o comando `docker compose up` (ativará perfil *prod* com banco MySQL)
 
 **Extra:**
 
@@ -85,4 +89,4 @@ Para a maioria das entidades do projeto estão previstas 2 a 4 operações disti
 
 ## OBSERVAÇÕES ⚠️
 
-*Este projeto **ainda está em desenvolvimento** e faz parte de meus estudos em backend com Java e Spring Boot. Embora seja uma aplicação simples e com escopo genérico, seu objetivo principal é consolidar conhecimentos em arquitetura de APIs REST, persistência com Spring Data JPA e boas práticas de desenvolvimento. Futuramente, pretendo expandir suas funcionalidades e aplicar conceitos mais avançados conforme evoluo tecnicamente.*
+*Este projeto faz parte de meus estudos em backend com Java e Spring Boot. Embora seja uma aplicação simples e com escopo genérico, seu objetivo principal é consolidar conhecimentos em arquitetura de APIs REST, persistência com Spring Data JPA e boas práticas de desenvolvimento. Futuramente, pretendo expandir suas funcionalidades e aplicar conceitos mais avançados conforme evoluo tecnicamente.*
