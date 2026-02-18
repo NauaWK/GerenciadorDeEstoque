@@ -1,5 +1,5 @@
 services:
-  db:
+  mysql:
     image: mysql:8.0
     container_name: estoquedb
     environment:
@@ -9,10 +9,18 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
   app:
     build: .
     container_name: estoquespring
     ports: 
       - "8080:8080"
     depends_on: 
-      - db
+      - mysql
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+
+volumes:
+  mysql_data:
