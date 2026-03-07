@@ -45,7 +45,7 @@ O projeto consistirá em um sistema de **gerenciamento de estoque**, permitindo 
 
 Arquitetura baseada em camadas com as seguintes separações:
 
-→ entities (classes representando as entidades do banco de dados)
+→ entity (classes representando as entidades do banco de dados)
 
 → dto (RequestDTO/ResponseDTO para cada entidade) 
 
@@ -53,11 +53,11 @@ Arquitetura baseada em camadas com as seguintes separações:
 
 → mappers (conterá os mappers que converterão DTOs → entidade e vice-versa)
 
-→ controllers (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
+→ controller (mapeamento de endpoints, chamadas de serviços e retorno de respostas HTTP)
 
-→ services (regras de negócio e chamadas de repositórios)
+→ service (regras de negócio e chamadas de repositórios)
 
-→ repositories (camada de persistência, acesso direto ao banco de dados)
+→ repository (camada de persistência, acesso direto ao banco de dados)
 
 → exception (tratamento centralizado de exceções)
 
