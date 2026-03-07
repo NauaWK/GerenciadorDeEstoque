@@ -1,7 +1,7 @@
 
-package com.example.GerenciadorEstoque.repositories;
+package com.example.GerenciadorEstoque.repository;
 
-import com.example.GerenciadorEstoque.entities.Categoria;
+import com.example.GerenciadorEstoque.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{

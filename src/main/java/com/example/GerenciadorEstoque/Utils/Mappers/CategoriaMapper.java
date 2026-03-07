@@ -1,9 +1,9 @@
 
-package com.example.GerenciadorEstoque.utils.mappers;
+package com.example.GerenciadorEstoque.utils.Mappers;
 
 import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
-import com.example.GerenciadorEstoque.entities.Categoria;
+import com.example.GerenciadorEstoque.entity.Categoria;
 import org.springframework.stereotype.Component;
 
 @Component

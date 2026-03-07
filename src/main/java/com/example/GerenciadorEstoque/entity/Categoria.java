@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.entities;
+package com.example.GerenciadorEstoque.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

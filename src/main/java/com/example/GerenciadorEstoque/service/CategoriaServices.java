@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.services;
+package com.example.GerenciadorEstoque.service;
 
 import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
@@ -7,12 +7,12 @@ import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.GerenciadorEstoque.exception.customExceptions.CategoryWithProductsException;
 import com.example.GerenciadorEstoque.exception.customExceptions.ObjectAlreadyExistsException;
 import com.example.GerenciadorEstoque.exception.customExceptions.ObjectNotFoundException;
-import com.example.GerenciadorEstoque.utils.mappers.CategoriaMapper;
-import com.example.GerenciadorEstoque.entities.Categoria;
-import com.example.GerenciadorEstoque.entities.Produto;
-import com.example.GerenciadorEstoque.repositories.CategoriaRepository;
-import com.example.GerenciadorEstoque.repositories.ProdutoRepository;
-import com.example.GerenciadorEstoque.utils.mappers.ProdutoMapper;
+import com.example.GerenciadorEstoque.utils.Mappers.CategoriaMapper;
+import com.example.GerenciadorEstoque.entity.Categoria;
+import com.example.GerenciadorEstoque.entity.Produto;
+import com.example.GerenciadorEstoque.repository.CategoriaRepository;
+import com.example.GerenciadorEstoque.repository.ProdutoRepository;
+import com.example.GerenciadorEstoque.utils.Mappers.ProdutoMapper;
 import java.util.List;
 import org.springframework.stereotype.Service;
 

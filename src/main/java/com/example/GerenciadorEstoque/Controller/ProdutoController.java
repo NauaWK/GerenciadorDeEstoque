@@ -1,6 +1,6 @@
 package com.example.GerenciadorEstoque.controller;
 
-import com.example.GerenciadorEstoque.services.ProdutoServices;
+import com.example.GerenciadorEstoque.service.ProdutoServices;
 import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoRequestDTO;
 import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.GerenciadorEstoque.docs.ProdutoControllerDoc;

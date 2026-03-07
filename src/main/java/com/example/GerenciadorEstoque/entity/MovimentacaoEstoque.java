@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.entities;
+package com.example.GerenciadorEstoque.entity;
 
 import com.example.GerenciadorEstoque.utils.enums.TipoMovimentacao;
 import jakarta.persistence.Column;

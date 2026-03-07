@@ -1,5 +1,5 @@
 
-package com.example.GerenciadorEstoque.entities;
+package com.example.GerenciadorEstoque.entity;
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;

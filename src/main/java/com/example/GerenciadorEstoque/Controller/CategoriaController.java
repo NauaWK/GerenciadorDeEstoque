@@ -5,7 +5,7 @@ import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaRequestDTO;
 import com.example.GerenciadorEstoque.dto.CategoriaDTOs.CategoriaResponseDTO;
 import com.example.GerenciadorEstoque.dto.ProdutoDTOs.ProdutoResponseDTO;
 import com.example.GerenciadorEstoque.docs.CategoriaControllerDoc;
-import com.example.GerenciadorEstoque.services.CategoriaServices;
+import com.example.GerenciadorEstoque.service.CategoriaServices;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;

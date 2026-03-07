@@ -1,10 +1,10 @@
 
-package com.example.GerenciadorEstoque.utils.mappers;
+package com.example.GerenciadorEstoque.utils.Mappers;
 
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
-import com.example.GerenciadorEstoque.entities.MovimentacaoEstoque;
-import com.example.GerenciadorEstoque.entities.Produto;
+import com.example.GerenciadorEstoque.entity.MovimentacaoEstoque;
+import com.example.GerenciadorEstoque.entity.Produto;
 import org.springframework.stereotype.Component;
 
 @Component

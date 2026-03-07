@@ -1,7 +1,7 @@
 
-package com.example.GerenciadorEstoque.repositories;
+package com.example.GerenciadorEstoque.repository;
 
-import com.example.GerenciadorEstoque.entities.Produto;
+import com.example.GerenciadorEstoque.entity.Produto;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,14 +1,14 @@
 
-package com.example.GerenciadorEstoque.services;
+package com.example.GerenciadorEstoque.service;
 
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
-import com.example.GerenciadorEstoque.entities.Categoria;
-import com.example.GerenciadorEstoque.entities.MovimentacaoEstoque;
-import com.example.GerenciadorEstoque.entities.Produto;
+import com.example.GerenciadorEstoque.entity.Categoria;
+import com.example.GerenciadorEstoque.entity.MovimentacaoEstoque;
+import com.example.GerenciadorEstoque.entity.Produto;
 import com.example.GerenciadorEstoque.exception.customExceptions.ObjectNotFoundException;
-import com.example.GerenciadorEstoque.repositories.MovimentacaoEstoqueRepository;
-import com.example.GerenciadorEstoque.utils.mappers.MovimentacaoEstoqueMapper;
+import com.example.GerenciadorEstoque.repository.MovimentacaoEstoqueRepository;
+import com.example.GerenciadorEstoque.utils.Mappers.MovimentacaoEstoqueMapper;
 import java.util.List;
 import org.springframework.stereotype.Service;
 

@@ -4,7 +4,7 @@ package com.example.GerenciadorEstoque.controller;
 import com.example.GerenciadorEstoque.docs.MovimentacaoEstoqueControllerDoc;
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoRequestDTO;
 import com.example.GerenciadorEstoque.dto.MovimentacaoEstoqueDTOs.MovimentacaoResponseDTO;
-import com.example.GerenciadorEstoque.services.MovimentacaoEstoqueServices;
+import com.example.GerenciadorEstoque.service.MovimentacaoEstoqueServices;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.net.URI;
