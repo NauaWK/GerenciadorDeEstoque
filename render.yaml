@@ -7,26 +7,4 @@ services:
     autoDeploy: true
     envVars:
       - key: SPRING_PROFILES_ACTIVE
-        value: prod
-      - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://mysql:3306/estoque
-      - key: SPRING_DATASOURCE_USERNAME
-        value: user
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: password
-
-  - type: web
-    name: mysql
-    env: docker
-    plan: free
-    dockerfilePath: ./mysql/Dockerfile
-    autoDeploy: true
-    envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        value: rootpassword
-      - key: MYSQL_DATABASE
-        value: estoque
-      - key: MYSQL_USER
-        value: user
-      - key: MYSQL_PASSWORD
-        value: password
+        value: dev
