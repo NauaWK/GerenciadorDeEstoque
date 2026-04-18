@@ -15,7 +15,7 @@ services:
       - key: SPRING_DATASOURCE_PASSWORD
         value: password
 
-  - type: private_service
+  - type: web
     name: mysql
     env: docker
     plan: free
